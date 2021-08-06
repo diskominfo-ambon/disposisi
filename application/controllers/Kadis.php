@@ -60,8 +60,9 @@ class Kadis extends CI_Controller {
 				$sekertaris = $this->m_sekertaris->all();
 				$pegawai 	= $this->m_pegawai->all();
 				$userId = $this->session->userdata('id_user');
+				$user = $this->currentUser();
 				
-				$this->load->view('kadis/disposisi', compact('sekertaris', 'pegawai', 'userId'));
+				$this->load->view('kadis/disposisi', compact('sekertaris', 'pegawai', 'userId', 'user'));
 		}else{
 			$post = $_POST;
 			
