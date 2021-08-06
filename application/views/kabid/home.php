@@ -340,21 +340,24 @@
                                         </div><!-- .nk-block-head-content -->
                                         <div class="nk-block-head-content">
                                             <div class="toggle-wrap nk-block-tools-toggle">
-                                                <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
-                                                <div class="toggle-expand-content" data-content="pageMenu">
-                                                    <ul class="nk-block-tools g-3">
-                                                        <li>
-                                                            
-                                                        </li>
-                                                        <li class="nk-block-tools-opt"><a href="<?php echo base_url(); ?>index.php/kabid/tambah" class="btn btn-primary"><em class="icon ni ni-reports"></em><span>Disposisi</span></a></li>
-                                                    </ul>
-                                                </div>
+                                                <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>                                               
                                             </div>
                                         </div><!-- .nk-block-head-content -->
                                     </div><!-- .nk-block-between -->
                                 </div><!-- .nk-block-head -->
                                 <!-- Content -->
-
+								<ul class="nav nav-tabs ml-1">
+									<li class="nav-item">
+										<a class="nav-link <?= $order == '' ? 'active': '' ?>" href="<?php echo base_url(); ?>index.php/kabid">Semua</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link <?= $order == 'proses' ? 'active': '' ?>" href="<?php echo base_url(); ?>index.php/kabid?order=proses">Disposisi</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link <?= $order == 'finish' ? 'active': '' ?>" href="<?php echo base_url(); ?>index.php/kabid?order=finish">Laporan</a>
+									</li>										
+								</ul>
+								
                                 <div class="nk-block nk-block-lg">
                                         
                                         <table class="datatable-init nowrap nk-tb-list is-separate" data-auto-responsive="false">
@@ -364,11 +367,11 @@
                                                     <th class="nk-tb-col tb-col-sm"><span>Nomor Berkas</span></th>
                                                     <th class="nk-tb-col tb-col-sm"><span>Tanggal Masuk</span></th>
                                                     <th class="nk-tb-col tb-col-sm"><span>Tanggal Expire</span></th>
-                                                     <th class="nk-tb-col tb-col-sm"><span>Nomor Surat Masuk</span></th>
-                                                      <th class="nk-tb-col tb-col-sm"><span>Asal Surat Masuk</span></th>
-                                                       <th class="nk-tb-col tb-col-sm"><span>Perihal</span></th>
-                                                        <th class="nk-tb-col tb-col-sm"><span>Sifat Surat</span></th>
-                                                         <th class="nk-tb-col tb-col-sm"><span>status</span></th>
+                                                    <th class="nk-tb-col tb-col-sm"><span>Nomor Surat Masuk</span></th>
+													<th class="nk-tb-col tb-col-sm"><span>Asal Surat Masuk</span></th>
+													<th class="nk-tb-col tb-col-sm"><span>Perihal</span></th>
+													<th class="nk-tb-col tb-col-sm"><span>Sifat Surat</span></th>
+													<th class="nk-tb-col tb-col-sm"><span>status</span></th>
                                                     <th class="nk-tb-col nk-tb-col-tools">
                                                         <ul class="nk-tb-actions gx-1 my-n1">
                                                             <li class="mr-n1">
@@ -416,11 +419,15 @@
                                                                     <div class="dropdown-menu dropdown-menu-right">
                                                                         <ul class="link-list-opt no-bdr">
                                                                             <li>
-                                                                                <a data-image-src="<?= base_url('assets/gambar/'. $data->gambar) ?>" class="button__img-preview" href="javascript:void(0);" data-toggle="modal" data-target="#modalDefault"><em class="icon ni ni-eye"></em> Lihat data</a>
+                                                                                <a  data-id-sm="<?= $data->id_sm ?>" data-image-src="<?= base_url('assets/gambar/'. $data->gambar) ?>" class="button__img-preview btn__traking" href="javascript:void(0);" data-toggle="modal" data-target="#modalDefault"><em class="icon ni ni-eye"></em> Lacak</a>
                                                                             </li>
-                                                                            <li><a href="<?=site_url('kabid/update/'.$data->id_sm)?>"><em class="icon ni ni-edit"></em><span>Edit Data</span></a></li>
-                                                                          
+																			<?php if ($order == 'proses'): ?>
+                                                                            <li><a href="<?php echo base_url(); ?>index.php/kabid/tambah?id_sm=<?= $data->id_sm ?>"><em class="icon ni ni-edit"></em><span>Disposisi</span></a></li>
+																			<?php endif; ?>
+																			
+																			<?php if ($order == ''): ?>
                                                                             <li><a href="<?=site_url('kabid/delete/'.$data->id_sm)?>" onclick="return confirm('Yakin Hapus?')" name="id_sm" method="post" ><em class="icon ni ni-trash"></em><span>Hapus Data</span></a></li>
+																			<?php endif; ?>
                                                                         </ul>
                                                                     </div>
                                                                 </div>
@@ -466,36 +473,102 @@
     <!-- app-root @e -->
 
 <!-- Modal Content Code -->
+
 <div class="modal fade" tabindex="-1" id="modalDefault">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <a href="#" class="close" data-dismiss="modal" aria-label="Close">
-                <em class="icon ni ni-cross"></em>
-            </a>
-            <div class="modal-header">
-                <h5 class="modal-title">Lampiran Surat</h5>
-            </div>
-            <div class="modal-body">
-                <img src="" alt="" style="width: 500px; object-fit: auto; border-radius: 3px;" id="modal__img-preview"/>
-            </div>
-            
-        </div>
-    </div>
-</div>
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<a href="#" class="close" data-dismiss="modal" aria-label="Close">
+					<em class="icon ni ni-cross"></em>
+				</a>
+				<div class="modal-header">
+					<h5 class="modal-title">Gambar</h5>
+				</div>
+				<div class="modal-body">
+					<div class="timeline">
+						<ul class="timeline-list" id="timeline-list">
+							<li class="timeline-item">
+								<div class="timeline-status bg-primary is-outline"></div>
+								<div class="timeline-date">13 Nov <em class="icon ni ni-alarm-alt"></em></div>
+								<div class="timeline-data">
+									<h6 class="timeline-title">Submited KYC Application</h6>
+									<div class="timeline-des">
+										<p>Re-submitted KYC Application form.</p>
+										<span class="time">09:30am</span>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
 
     <!-- JavaScript -->
     <script src="<?php echo base_url(); ?>assets/js/bundle.js?ver=2.2.0"></script>
-    <script src="<?php echo base_url(); ?>assets/js/scripts.js?ver=2.2.0"></script>
+    <script src="<?php echo base_url(); ?>assets/js/scripts.js?ver=2.2.1"></script>
     <script src="<?php echo base_url(); ?>assets/js/charts/chart-ecommerce.js?ver=2.2.0"></script>
 
     <script>
         $(document).ready(() => {
-            $('.button__img-preview').click(function () {
-                const {imageSrc} = $(this).data();
 
-                $('#modal__img-preview').attr('src', imageSrc);
+            function renderTimelineList(data) {
+                const date = new Date(data.tanggal);
+                const dateFull = new Intl.DateTimeFormat('id-ID', { dateStyle: 'full', timeStyle: 'short' }).format(date);
+                const dateShort = new Intl.DateTimeFormat('id-ID', { dateStyle: 'short' }).format(date); 
 
-            })
+                return `
+                    <li class="timeline-item">
+                        <div class="timeline-status bg-primary is-outline"></div>
+                        <div class="timeline-date">${dateShort} <em class="icon ni ni-alarm-alt"></em></div>
+                        <div class="timeline-data">
+                            <h6 class="timeline-title">${data.instruksi}</h6>
+                            <div class="timeline-des">
+                                <p>${data.nama_jabatan} - ${data.nama}</p>
+                                 <span class="time">${dateFull}</span>
+                            </div>
+                        </div>
+                    </li>
+                `;
+            }
+
+            $('.btn__traking').click(function () {
+                const idSm = $(this).data().idSm;
+
+                const uri = `${window.location.origin}/disposisi/index.php/tracking/ajax_tracking/${idSm}`;
+                console.log({uri});
+
+                fetch(uri)
+                    .then(res => res.json())
+                    .then(({success, data: payload}) => {
+                        // data history.
+                        console.log({success, payload});
+
+                        if (!success) {
+                            alert('Terjadi keslahan memuat!');
+                            return;
+                        }
+
+                        const html = payload.map(data => {
+                            return renderTimelineList(data);
+                        });
+
+                        $('#timeline-list').html(html.join(''));
+
+                        // luncurkan modal.
+                        $('#modalDefault').modal();
+                    })
+
+                
+
+            });
+            // $('.button__img-preview').click(function () {
+            //     const {imageSrc} = $(this).data();
+
+            //     $('#modal__img-preview').attr('src', imageSrc);
+
+            // })
         });
     </script>
 </body>

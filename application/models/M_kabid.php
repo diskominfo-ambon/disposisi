@@ -19,6 +19,45 @@ class M_kabid extends CI_Model{
 
         return $query->result();
     }
+
+	public function getByOder($id, $order)
+	{
+		$sql =<<<SQL
+			SELECT DISTINCT s.*, ss.sifat_surat FROM
+				surat_masuk s LEFT JOIN disposisi d
+					ON s.id_sm = d.id_sm
+				INNER JOIN sifat_surat ss 
+					ON s.id_ss = ss.id_ss
+				INNER JOIN pegawai p
+					ON d.id_pegawai = (
+						SELECT id_pegawai FROM pegawai
+							WHERE id_user = $id
+					)
+
+		SQL;
+
+		if (strlen($order) === 0) {
+			$sql .=<<<SQL
+				WHERE s.status IS NULL;
+			SQL;
+		}
+
+		if ($order == 'proses') {
+			$sql .=<<<SQL
+				WHERE s.status = 'Proses';
+			SQL;
+		}
+
+		if ($order == 'finish') {
+			$sql .=<<<SQL
+				WHERE s.status = 'finish';
+			SQL;
+		}
+		
+		return $this->db->query($sql)->result();
+	}
+
+
     public function get($id = null)
     {
         $this->db->select('*');

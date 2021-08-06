@@ -16,9 +16,10 @@ class Kabid extends CI_Controller {
 	public function index()
 	{
 		$idUser = $this->session->userdata('id_user');
-		$data ['row'] = $this->m_kabid->all($idUser);
+		$order = $_GET['order'] ?? '';
+		$data ['row'] = $this->m_kabid->getByOder($idUser, $order);	
 	
-		$this->load->view('kabid/home', $data);
+		$this->load->view('kabid/home', array_merge($data, compact('order')));
 	}
 
 	public function show($id) {
