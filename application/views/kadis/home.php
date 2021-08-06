@@ -438,7 +438,7 @@
                                                     </td>
                                                     <td class="nk-tb-col">														
 														<?php if ($order == ''): ?>
-                                                        <a href="<?php echo base_url(); ?>index.php/kadis/tambah" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Disposisi">DIS</a>
+                                                        <a href="<?php echo base_url(); ?>index.php/kadis/tambah?id_sm=<?= $data->id_sm ?>" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Disposisi">DIS</a>
 														<?php endif; ?>
 
 														<?php if ($order != ''): ?>

@@ -351,20 +351,8 @@
                                             <div class="toggle-wrap nk-block-tools-toggle">
                                                 <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
                                                 <div class="toggle-expand-content" data-content="pageMenu">
-                                                    <ul class="nk-block-tools g-3">
-                                                        <li>
-                                                            <div class="drodown">
-                                                                <a href="#" class="dropdown-toggle btn btn-white btn-dim btn-outline-light" data-toggle="dropdown"><em class="d-none d-sm-inline icon ni ni-calender-date"></em><span><span class="d-none d-md-inline">Last</span> 30 Days</span><em class="dd-indc icon ni ni-chevron-right"></em></a>
-                                                                <div class="dropdown-menu dropdown-menu-right">
-                                                                    <ul class="link-list-opt no-bdr">
-                                                                        <li><a href="#"><span>Last 30 Days</span></a></li>
-                                                                        <li><a href="#"><span>Last 6 Months</span></a></li>
-                                                                        <li><a href="#"><span>Last 1 Years</span></a></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="nk-block-tools-opt"><a href="<?php echo base_url(); ?>index.php/kadis" class="btn btn-primary"><em class="icon ni ni-reports"></em><span>Kembali</span></a></li>
+                                                    <ul class="nk-block-tools g-3">                                                        
+                                                        <li class="nk-block-tools-opt"><a href="<?php echo base_url(); ?>index.php/kadis" class="btn btn-primary"><em class="icon ni ni-arrow-left"></em><span>Kembali</span></a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -383,7 +371,7 @@
                                                 </div>
                                                 <form action="<?php echo base_url(); ?>index.php/kadis/tambah" method="post">
                                                     <div class="row g-4">
-                                                        <?php //echo validation_errors(); ?>
+                                                        <?php echo validation_errors(); ?>
                                                         <div class="col-lg-6">
                                                             <div class="form-group">
 
@@ -398,7 +386,10 @@
                                                                     <select class="form-select form-control form-control-xl" data-ui="xl" id="field__id-sm" name="id_sm">
                                                                         <option value="default_option">--Pilih--</option>
                                                                         <?php foreach($sekertaris as $seker): ?>
-                                                                            <option value="<?= $seker->id_sm ?>" option_select_name"><?= $seker->perihal ?></option>
+																			<?php if (isset($_GET['id_sm']) && $_GET['id_sm'] == $seker->id_sm): ?>
+																				<option value="<?= $seker->id_sm ?>" selected><?= $seker->perihal ?></option>
+																			<?php endif; ?>
+                                                                            <option value="<?= $seker->id_sm ?>"><?= $seker->perihal ?></option>
                                                                         <?php endforeach; ?>                                                                </select>
                                                                     <label class="form-label-outlined" for="outlined-select">Judul Surat Masuk</label>
                                                                 </div>
@@ -425,18 +416,15 @@
                                                         <div class="col-lg-6">
                                                             <img id="preview_image" style="border-radius: 4px; width: 400px; object-fit: auto;" />
                                                         </div>
-                                                        
-                                                        </div>
-                                                        </div>
-                                                        </div><!-- .foem-group -->
-                                                        <div class="col-12">
-                                                            <div class="form-group">
-                                                                <button type="submit" class="btn btn-lg btn-primary">Disposisi</button>
-                                                                <button type="reset" class="btn btn-lg btn-primary">Reset</button>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
+                                                    </div>                                                       
+                                                    <div class="row mt-3">
+														<div class="col-12">
+															<div class="form-group">
+																<button type="submit" class="btn btn-lg btn-primary">Mulai disposisi</button>
+																<button type="reset" class="btn btn-lg btn-primary">Reset</button>
+															</div>
+														</div>
+													</div>
                                                 </form>
                                             </div>
                                         </div>
