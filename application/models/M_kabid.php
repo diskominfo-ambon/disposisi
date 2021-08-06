@@ -72,6 +72,19 @@ class M_kabid extends CI_Model{
     public function tambah($post) {
         $body = [];
 
+		// cek waktu kadarluasa surat.
+		$surat = $this->db
+			->select('tanggal_expire')
+			->where('id_sm', $post['id_sm'])
+			->get('surat_masuk')
+			->result()[0];
+
+		date_default_timezone_set('Asia/Jayapura');
+	
+		if (time() > strtotime($surat->tanggal_expire)) {
+			return false;
+		}
+
         foreach ($post['id_pegawai'] as $id) {
             $body[] = array_merge(
                 $post,

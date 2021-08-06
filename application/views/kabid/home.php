@@ -418,14 +418,15 @@
                                                                     <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                                     <div class="dropdown-menu dropdown-menu-right">
                                                                         <ul class="link-list-opt no-bdr">
+                                                                            
+																			<?php if ($order != ''): ?>
                                                                             <li>
-                                                                                <a  data-id-sm="<?= $data->id_sm ?>" data-image-src="<?= base_url('assets/gambar/'. $data->gambar) ?>" class="button__img-preview btn__traking" href="javascript:void(0);" data-toggle="modal" data-target="#modalDefault"><em class="icon ni ni-eye"></em> Lacak</a>
-                                                                            </li>
-																			<?php if ($order == 'proses'): ?>
-                                                                            <li><a href="<?php echo base_url(); ?>index.php/kabid/tambah?id_sm=<?= $data->id_sm ?>"><em class="icon ni ni-edit"></em><span>Disposisi</span></a></li>
+																			<a  data-id-sm="<?= $data->id_sm ?>" data-image-src="<?= base_url('assets/gambar/'. $data->gambar) ?>" class="button__img-preview btn__traking" href="javascript:void(0);" data-toggle="modal" data-target="#modalDefault"><em class="icon ni ni-eye"></em> Lacak</a>
+																			</li>
 																			<?php endif; ?>
 																			
 																			<?php if ($order == ''): ?>
+																			<li><a href="<?php echo base_url(); ?>index.php/kabid/tambah?id_sm=<?= $data->id_sm ?>"><em class="icon ni ni-edit"></em><span>Disposisi</span></a></li>
                                                                             <li><a href="<?=site_url('kabid/delete/'.$data->id_sm)?>" onclick="return confirm('Yakin Hapus?')" name="id_sm" method="post" ><em class="icon ni ni-trash"></em><span>Hapus Data</span></a></li>
 																			<?php endif; ?>
                                                                         </ul>

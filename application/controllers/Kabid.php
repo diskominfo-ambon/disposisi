@@ -34,7 +34,7 @@ class Kabid extends CI_Controller {
 
 		$this->form_validation->set_rules('instruksi', 'Instruksi', 'required');
 		$this->form_validation->set_rules('id_sm', 'Kode surat masuk', 'required');
-		$this->form_validation->set_rules('id_pegawai', 'Pegawai', 'required');
+		$this->form_validation->set_rules('id_pegawai[]', 'Pegawai', 'required');
 		$this->form_validation->set_message('required', '%s masih kosong, silahkan isi');
 		$this->form_validation->set_message('min_length', '{field} minimal 5 karakter');
 		$this->form_validation->set_message('is_unique', '{field} ini sudah dipakai, ganti yang lain');
@@ -50,7 +50,11 @@ class Kabid extends CI_Controller {
 				$this->load->view('kabid/disposisi', compact('sekertaris', 'pegawai', 'userId'));
 		}else{
 			$post = $_POST;
-			$this->m_kabid->tambah($post);
+			if ($this->m_kabid->tambah($post) === false) {
+				echo "<script>alert('Waktu untuk disposisi sudah berakhir!');</script>";
+				echo "<script>window.location='".site_url('kabid')."';</script>";
+				
+			}
 			if ($this->db->affected_rows() > 0) {
 				echo "<script>alert('Data Berhasil Disimpan');</script>";
 			}
