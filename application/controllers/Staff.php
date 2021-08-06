@@ -1,7 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+require_once __DIR__.'/Auth.php';
+
 class Staff extends CI_Controller {
+
+	use Auth;
 
 	function __construct()
 	{
@@ -13,12 +17,16 @@ class Staff extends CI_Controller {
 		$this->load->library('form_validation');
 	}
 
+
 	public function index()
 	{
 		$idUser = $this->session->userdata('id_user');
-		$data ['row'] = $this->m_staff->all($idUser);
+		$data['row'] = $this->m_staff->all($idUser);
+		$user = $this->currentUser();
+
+		var_dump($user);
 	
-		$this->load->view('staff/home', $data);
+		$this->load->view('staff/home', array_merge($data, ['user' => $user]));
 	}
 
 	public function show($id) {
