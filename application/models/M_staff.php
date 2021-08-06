@@ -28,5 +28,41 @@ class M_staff extends CI_Model{
         $query = $this->db->get();
         return $query;
     }
+
+	public function update($post)
+	{
+
+		$userId = $this->session->userdata('id_user');
+		
+		$sql =<<<SQL
+			SELECT id_pegawai FROM pegawai
+				WHERE id_bidang = (
+					SELECT id_bidang FROM pegawai
+						WHERE id_user = $userId
+				);
+		SQL;
+		$pegawai = $this->db
+			->query($sql)
+			->result();
+
+		$body = [];
+
+		foreach ($pegawai as $p) {
+			$body[] = [
+				'instruksi' => $post['laporan'],
+				'id_sm' => $post['id_sm'],
+				'id_pegawai' => $p->id_pegawai
+			];
+		}
+
+		// set laporan kembali ke tiap-tiap atasannya.
+		$this->db->insert_batch('disposisi', $body);
+	
+		// rubah status surat ke finish.	
+		$this->db
+			->where('id_sm', $post['id_sm'])
+			->set('status', 'finish')
+			->update('surat_masuk');
+	}
  
 }

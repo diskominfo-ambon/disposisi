@@ -40,8 +40,7 @@ class Staff extends CI_Controller {
 	{
 
 		$this->form_validation->set_rules('laporan', 'laporan', 'required');
-		$this->form_validation->set_rules('id_sm', 'Kode surat masuk', 'required');
-		$this->form_validation->set_rules('id_pegawai', 'Pegawai', 'required');
+		$this->form_validation->set_rules('id_sm', 'Kode surat masuk', 'required');		
 		$this->form_validation->set_message('required', '%s masih kosong, silahkan isi');
 		$this->form_validation->set_message('min_length', '{field} minimal 5 karakter');
 		$this->form_validation->set_message('is_unique', '{field} ini sudah dipakai, ganti yang lain');
@@ -57,7 +56,7 @@ class Staff extends CI_Controller {
 				$this->load->view('staff/laporan', compact('sekertaris', 'pegawai'));
 		}else{
 			$post = $_POST;
-			$this->m_kabid->tambah($post);
+			$this->m_staff->update($post);
 			if ($this->db->affected_rows() > 0) {
 				echo "<script>alert('Data Berhasil Disimpan');</script>";
 			}
@@ -67,7 +66,7 @@ class Staff extends CI_Controller {
 
 		public function update ()
 		{
-			$this->load->view('kabid/edit');
+			$this->load->view('staff/edit');
 		}
 
 }

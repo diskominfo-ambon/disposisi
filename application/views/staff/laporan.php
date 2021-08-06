@@ -364,7 +364,7 @@
                                                 <div class="card-head">
                                                     <h5 class="card-title">Laporan Disposisi Surat</h5>
                                                 </div>
-                                                <form action="<?php echo base_url(); ?>index.php/kabid/tambah" method="post">
+                                                <form action="<?php echo base_url(); ?>index.php/staff/tambah" method="post">
                                                     <div class="row g-4">
                                                         <?php echo validation_errors(); ?>
                                                         <div class="col-lg-6">
@@ -384,7 +384,7 @@
 																			<?php 
 																				continue;
 																			endif; ?>
-                                                                            <option value="<?= $seker->id_sm ?>" option_select_name><?= $seker->nomor_berkas ?></option>
+                                                                            <option value="<?= $seker->id_sm ?>"><?= $seker->nomor_berkas ?></option>
                                                                         <?php endforeach; ?>                                                                
 																	</select>
                                                                     <label class="form-label-outlined" for="outlined-select">ID Surat Masuk</label>
