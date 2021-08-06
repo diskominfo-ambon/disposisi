@@ -346,20 +346,8 @@
                                             <div class="toggle-wrap nk-block-tools-toggle">
                                                 <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
                                                 <div class="toggle-expand-content" data-content="pageMenu">
-                                                    <ul class="nk-block-tools g-3">
-                                                        <li>
-                                                            <div class="drodown">
-                                                                <a href="#" class="dropdown-toggle btn btn-white btn-dim btn-outline-light" data-toggle="dropdown"><em class="d-none d-sm-inline icon ni ni-calender-date"></em><span><span class="d-none d-md-inline">Last</span> 30 Days</span><em class="dd-indc icon ni ni-chevron-right"></em></a>
-                                                                <div class="dropdown-menu dropdown-menu-right">
-                                                                    <ul class="link-list-opt no-bdr">
-                                                                        <li><a href="#"><span>Last 30 Days</span></a></li>
-                                                                        <li><a href="#"><span>Last 6 Months</span></a></li>
-                                                                        <li><a href="#"><span>Last 1 Years</span></a></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="nk-block-tools-opt"><a href="<?php echo base_url(); ?>index.php/staff" class="btn btn-primary"><em class="icon ni ni-reports"></em><span>Kembali</span></a></li>
+                                                    <ul class="nk-block-tools g-3">                                                       
+                                                        <li class="nk-block-tools-opt"><a href="<?php echo base_url(); ?>index.php/staff" class="btn btn-primary"><em class="icon ni ni-arrow-left"></em><span>Kembali</span></a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -391,28 +379,28 @@
                                                                     <select class="form-select form-control form-control-xl" data-ui="xl" id="field__id-sm" name="id_sm" >
                                                                         <option value="default_option">--Pilih--</option>
                                                                         <?php foreach($sekertaris as $seker): ?>
-                                                                            <option value="<?= $seker->id_sm ?>" option_select_name"><?= $seker->nomor_berkas ?></option>
-                                                                        <?php endforeach; ?>                                                                </select>
+																			<?php if(isset($_GET['id']) && $_GET['id'] == $seker->id_sm): ?>
+																				<option value="<?= $seker->id_sm ?>" selected><?= $seker->nomor_berkas ?></option>
+																			<?php 
+																				continue;
+																			endif; ?>
+                                                                            <option value="<?= $seker->id_sm ?>" option_select_name><?= $seker->nomor_berkas ?></option>
+                                                                        <?php endforeach; ?>                                                                
+																	</select>
                                                                     <label class="form-label-outlined" for="outlined-select">ID Surat Masuk</label>
                                                                 </div>
                                                             </div>
                                                             
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                            <img id="preview_image" style="border-radius: 4px; width: 400px; object-fit: auto;" src="<?= base_url('assets/gambar/   ') ?>" />
-                                                        </div>
-                                                        </div>
-                                                        
-                                                        </div>
-                                                        </div>
-                                                        </div><!-- .foem-group -->
-                                                        <div class="col-12">
-                                                            <div class="form-group">
-                                                                <button type="submit" class="btn btn-lg btn-primary">Lapor</button>
-                                                                <button type="reset" class="btn btn-lg btn-primary">Reset</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                        </div>                                                        
+                                                    </div>                                                                                                        
+                                                    <div class="row mt-3">
+														<div class="col-12">
+															<div class="form-group">
+																<button type="submit" class="btn btn-lg btn-primary">Lapor</button>
+																<button type="reset" class="btn btn-lg btn-primary">Reset</button>
+															</div>
+														</div>
+													</div>
                                                 </form>
                                             </div>
                                         </div>
@@ -451,27 +439,6 @@
     <script src="<?php echo base_url(); ?>assets/js/bundle.js?ver=2.2.0"></script>
     <script src="<?php echo base_url(); ?>assets/js/scripts.js?ver=2.2.0"></script>
     <script src="<?php echo base_url(); ?>assets/js/charts/chart-ecommerce.js?ver=2.2.0"></script>
-
-    <script>
-        $(document).ready(() => {
-            $('#field__id-sm').on('change', function () {
-                const val = $(this).val();
-
-                $.get(window.location.origin + '/disposisi/index.php/kabid/show/' + val, (data) => {
-                    if (data.length == 0) {
-                        alert('Nomor surat tidak valid');
-                        return;
-                    }
-
-                    const sm = data[0];
-                    const src = window.location.origin + '/disposisi/assets/gambar/' + sm['gambar'];
-                    console.log({src});
-                    $('#preview_image').attr('src', src);
-                });
-            })
-        });
-    </script>
-
 </body>
 
 </html>

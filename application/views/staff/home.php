@@ -378,18 +378,18 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <table class="datatable-init nowrap nk-tb-list is-separate" data-auto-responsive="false">
+                                        <table class="table-responsive datatable-init nowrap nk-tb-list is-separate" data-auto-responsive="false">
                                             <thead>
                                                 <tr class="nk-tb-item nk-tb-head">
                                                     <th class="nk-tb-col tb-col-sm"><span>#</span></th>
                                                     <th class="nk-tb-col tb-col-sm"><span>Nomor Surat Masuk</span></th>
                                                     <th class="nk-tb-col tb-col-sm"><span>Tanggal Masuk</span></th>
                                                     <th class="nk-tb-col tb-col-sm"><span>Nomor Surat Masuk</span></th>
-                                                     <th class="nk-tb-col tb-col-sm"><span>Perihal</span></th>
-                                                      <th class="nk-tb-col tb-col-sm"><span>Asal Surat Masuk</span></th>
-                                                       <th class="nk-tb-col tb-col-sm"><span>Lampiran</span></th>
-                                                        <th class="nk-tb-col tb-col-sm"><span>Sifat Surat</span></th>
-                                                         <th class="nk-tb-col tb-col-sm"><span>status</span></th>
+													<th class="nk-tb-col tb-col-sm"><span>Perihal</span></th>
+													<th class="nk-tb-col tb-col-sm"><span>Asal Surat Masuk</span></th>
+													<th class="nk-tb-col tb-col-sm"><span>Lampiran</span></th>
+													<th class="nk-tb-col tb-col-sm"><span>Sifat Surat</span></th>
+													<th class="nk-tb-col tb-col-sm"><span>status</span></th>
                                                     <th class="nk-tb-col nk-tb-col-tools">
                                                         <ul class="nk-tb-actions gx-1 my-n1">
                                                             <li class="mr-n1">
@@ -430,12 +430,15 @@
                                                         <span class="tb-sub"><?=$data->status?></span>
                                                     </td>
                                                     <td class="nk-tb-col nk-tb-col-tools">
-                                                        <ul class="nk-tb-actions gx-1 my-n1">
+                                                        <ul class="nk-tb-actions gx-1 my-n1">															
                                                             <li class="mr-n1">
                                                                 <div class="dropdown">
                                                                     <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                                     <div class="dropdown-menu dropdown-menu-right">
                                                                         <ul class="link-list-opt no-bdr">
+																			<li>
+																				<a href="<?php echo base_url(); ?>index.php/staff/tambah?id=<?= $data->id_sm ?>"><em class="icon ni ni-file"></em> Buat laporan</a>
+																			</li>
                                                                             <li>
                                                                                 <a data-image-src="<?= base_url('assets/gambar/'. $data->gambar) ?>" class="button__img-preview" href="javascript:void(0);" data-toggle="modal" data-target="#modalDefault"><em class="icon ni ni-eye"></em> Lihat data</a>
                                                                             </li>

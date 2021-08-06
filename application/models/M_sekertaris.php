@@ -9,7 +9,7 @@ class M_sekertaris extends CI_Model{
 
         if ($idUser) {
             $rawQuery = <<<SQL
-            SELECT sm.id_sm, sm.judul_surat FROM surat_masuk sm 
+            SELECT sm.id_sm, sm.judul_surat, sm.nomor_berkas FROM surat_masuk sm 
                 INNER JOIN disposisi d ON sm.id_sm = d.id_sm
                 INNER JOIN pegawai p ON d.id_pegawai = p.id_pegawai
                 INNER JOIN user u ON p.id_user = u.id_user
