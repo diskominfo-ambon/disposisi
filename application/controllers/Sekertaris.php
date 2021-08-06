@@ -26,7 +26,7 @@ class Sekertaris extends CI_Controller {
 
 		$this->form_validation->set_rules('nomor_berkas', 'nomor berkas', 'required');
 		$this->form_validation->set_rules('tanggal_masuk', 'tanggal_masuk', 'required');
-		$this->form_validation->set_rules('tanggal_expire', 'Batas waktu', 'required');
+		// $this->form_validation->set_rules('tanggal_expire', 'Batas waktu', 'required');
 		$this->form_validation->set_rules('nomor_sm', 'nomor_sm', 'required');
 		$this->form_validation->set_rules('perihal', 'perihal', 'required');
 		$this->form_validation->set_rules('asal_sm', 'asal_sm', 'required');

@@ -14,8 +14,7 @@
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dashlite.min.css?ver=2.2.0">
     <link id="skin-default" rel="stylesheet" href="<?php echo base_url(); ?>assets/css/theme.css?ver=2.2.0">
-  
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/css/tempusdominus-bootstrap-4.min.css" integrity="sha512-3JRrEUwaCkFUBLK1N8HehwQgu8e23jTH4np5NHOmQOobuC4ROQxFwFgBLTnhcnQRMs84muMh0PnnwXlPq5MGjg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
 </head>
 
@@ -420,7 +419,7 @@ function tampilkanPreview(imagee,idpreview)
 
                                                     foreach ($errors as $error):
                                                     ?>
-                                                    <li class="text-danger mb-2"><?= $error ?> </li>
+                                                    	<li class="text-danger mb-2"><?= $error ?> </li>
                                                     <?php endforeach; ?>
                                                 </ul>
 
@@ -519,20 +518,7 @@ function tampilkanPreview(imagee,idpreview)
 
                                                         </div>
 
-                                                        <div class="col-lg-6">
-                                                             <div class="form-group">
-                                                                <label class="form-label" for="outlined-date-picker">Batas waktu</label>
-                                                                <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-                                                                    <input type="text" name="tanggal_expire" class="form-control-xl form-control datetimepicker-input" value="<?=set_value('tanggal_expire')?>" data-target="#datetimepicker1"/>
-                                                                    <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
-                                                                        <div class="input-group-text bg-white"><i class="icon ni ni-calendar-alt"></i></div>
-                                                                    </div>
-                                                                </div>
-
-                                                            </div>
             
-                                                        </div>
-
                                                         </div>
 
                                                         <div class="col-12">
@@ -575,23 +561,12 @@ function tampilkanPreview(imagee,idpreview)
         <!-- main @e -->
     </div>
     <!-- app-root @e -->
+    
     <!-- JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="<?php echo base_url(); ?>assets/js/bundle.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/scripts.js?ver=2.2.0"></script>
     <script src="<?php echo base_url(); ?>assets/js/charts/chart-ecommerce.js?ver=2.2.0"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/js/tempusdominus-bootstrap-4.min.js" integrity="sha512-k6/Bkb8Fxf/c1Tkyl39yJwcOZ1P4cRrJu77p83zJjN2Z55prbFHxPs9vN7q3l3+tSMGPDdoH51AEU8Vgo1cgAA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>          
-    <script>
-        console.log($('#datetimepicker1').datetimepicker({
-            format: 'YYYY-MM-DD H:mm:ss',
-            icons: {
-                time: "icon ni ni-clock-fill",
-                date: "icon ni ni-calendar-alt",
-                up: "icon ni ni-sort-up-fill",
-                down: "icon ni ni-sort-down-fill"
-            }
-        }));
-    </script>
+    
 </body>
 
 </html>

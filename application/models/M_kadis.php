@@ -56,6 +56,13 @@ class M_kadis extends CI_Model{
     public function tambah($post) {
         $body = [];
 
+		// set prosess disposisi.
+		$this->db
+			->where('id_sm', $post['id_sm'])
+			->set('tanggal_expire', $post['tanggal_expire'])
+			->set('status', 'Proses')
+			->update('surat_masuk');
+
         foreach ($post['id_pegawai'] as $id) {
             $body[] = array_merge(
                 $post,

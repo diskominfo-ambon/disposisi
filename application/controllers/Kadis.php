@@ -48,6 +48,7 @@ class Kadis extends CI_Controller {
 		
 		$this->form_validation->set_rules('instruksi', 'Instruksi', 'required');
 		$this->form_validation->set_rules('id_sm', 'Kode surat masuk', 'required');
+		$this->form_validation->set_rules('tanggal_expire', 'Batas waktu', 'required');
 		$this->form_validation->set_rules('id_pegawai[]', 'Pegawai', 'required');
 		$this->form_validation->set_message('required', '%s masih kosong, silahkan isi');
 		$this->form_validation->set_message('min_length', '{field} minimal 5 karakter');
