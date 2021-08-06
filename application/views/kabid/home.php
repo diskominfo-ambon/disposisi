@@ -116,7 +116,7 @@
                                                             </div>
                                                             <div class="chat-info">
                                                                 <div class="chat-from">
-                                                                    <div class="name">Abu Bin Ishtiyak</div>
+                                                                    <div class="name"><?= $user->nama ?></div>
                                                                     <span class="time">4:49 AM</span>
                                                                 </div>
                                                                 <div class="chat-context">
@@ -290,8 +290,8 @@
                                                     <em class="icon ni ni-user-alt"></em>
                                                 </div>
                                                 <div class="user-info d-none d-xl-block">
-                                                    <div class="user-status user-status-unverified">Unverified</div>
-                                                    <div class="user-name dropdown-indicator">Abu Bin Ishityak</div>
+                                                    <div class="user-status user-status-unverified">Kabid</div>
+                                                    <div class="user-name dropdown-indicator"><?= $user->nama ?></div>
                                                 </div>
                                             </div>
                                         </a>
@@ -302,8 +302,8 @@
                                                         <span>AB</span>
                                                     </div>
                                                     <div class="user-info">
-                                                        <span class="lead-text">Abu Bin Ishtiyak</span>
-                                                        <span class="sub-text">info@softnio.com</span>
+                                                        <span class="lead-text"><?= $user->nama ?></span>
+                                                        <span class="sub-text"><?= $user->email ?></span>
                                                     </div>
                                                 </div>
                                             </div>

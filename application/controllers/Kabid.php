@@ -1,7 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+
+require_once __DIR__.'/Auth.php';
+
 class Kabid extends CI_Controller {
+
+	use Auth;
 
 	function __construct()
 	{
@@ -18,8 +23,9 @@ class Kabid extends CI_Controller {
 		$idUser = $this->session->userdata('id_user');
 		$order = $_GET['order'] ?? '';
 		$data ['row'] = $this->m_kabid->getByOder($idUser, $order);	
+		$user = $this->currentUser();
 	
-		$this->load->view('kabid/home', array_merge($data, compact('order')));
+		$this->load->view('kabid/home', array_merge($data, compact('order', 'user')));
 	}
 
 	public function show($id) {
@@ -46,8 +52,9 @@ class Kabid extends CI_Controller {
 				$sekertaris = $this->m_sekertaris->all($idUser);	
 				$pegawai 	= $this->m_pegawai->gets($idUser);
 				$userId = $this->session->userdata('id_user');
+				$user = $this->currentUser();
 
-				$this->load->view('kabid/disposisi', compact('sekertaris', 'pegawai', 'userId'));
+				$this->load->view('kabid/disposisi', compact('sekertaris', 'pegawai', 'userId', 'user'));
 		}else{
 			$post = $_POST;
 			if ($this->m_kabid->tambah($post) === false) {
