@@ -32,7 +32,7 @@ class Kadis extends CI_Controller {
 
 		$data ['row'] = $this->m_kadis->getByOder($order);
 
-	
+		
 		$this->load->view('kadis/home', array_merge($data, ['user' => $user, 'order' => $order]));
 	}
 

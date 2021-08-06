@@ -14,9 +14,9 @@ class M_kadis extends CI_Model{
 		$idUser = $this->session->userdata('id_user');
 
 		$sql =<<<SQL
-			SELECT s.* FROM
-				surat_masuk s INNER JOIN disposisi d
-				ON s.id_sm = d.id_sm								
+			SELECT DISTINCT s.* FROM
+				surat_masuk s LEFT JOIN disposisi d
+				ON s.id_sm = d.id_sm							
 		SQL;
 
 		if (strlen($order) === 0) {
