@@ -1,7 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+require_once __DIR__.'/Auth.php';
+
 class Kadis extends CI_Controller {
+
+
+	use Auth;
 
 	function __construct()
 	{
@@ -17,9 +22,18 @@ class Kadis extends CI_Controller {
 
 	public function index()
 	{
-		
-		$data ['row'] = $this->m_kadis->get();
-		$this->load->view('kadis/home', $data);
+	
+		$order = $_GET['order'] ?? '';
+		$user = $this->currentUser();
+
+		if (strlen($order) > 0 && !in_array($order, ['proses', 'finish'])) {
+			$order = '';
+		}
+
+		$data ['row'] = $this->m_kadis->getByOder($order);
+
+	
+		$this->load->view('kadis/home', array_merge($data, ['user' => $user, 'order' => $order]));
 	}
 
 	public function show($id) {

@@ -14,6 +14,15 @@
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dashlite.min.css?ver=2.2.0">
     <link id="skin-default" rel="stylesheet" href="<?php echo base_url(); ?>assets/css/theme.css?ver=2.2.0">
+
+
+	<style>
+	
+		.dataTables_wrapper div:nth-child(2) {
+			width: 100%;
+    		overflow: scroll;			
+		}
+	</style>
 </head>
 
 <body class="nk-body bg-lighter npc-default has-sidebar ">
@@ -351,24 +360,7 @@
                                         </div><!-- .nk-block-head-content -->
                                         <div class="nk-block-head-content">
                                             <div class="toggle-wrap nk-block-tools-toggle">
-                                                <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
-                                                <div class="toggle-expand-content" data-content="pageMenu">
-                                                    <ul class="nk-block-tools g-3">
-                                                        <li>
-                                                            <div class="drodown">
-                                                                <a href="#" class="dropdown-toggle btn btn-white btn-dim btn-outline-light" data-toggle="dropdown"><em class="d-none d-sm-inline icon ni ni-calender-date"></em><span><span class="d-none d-md-inline">Last</span> 30 Days</span><em class="dd-indc icon ni ni-chevron-right"></em></a>
-                                                                <div class="dropdown-menu dropdown-menu-right">
-                                                                    <ul class="link-list-opt no-bdr">
-                                                                        <li><a href="#"><span>Last 30 Days</span></a></li>
-                                                                        <li><a href="#"><span>Last 6 Months</span></a></li>
-                                                                        <li><a href="#"><span>Last 1 Years</span></a></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="nk-block-tools-opt"><a href="<?php echo base_url(); ?>index.php/kadis/tambah" class="btn btn-primary"><em class="icon ni ni-reports"></em><span>Disposisi</span></a></li>
-                                                    </ul>
-                                                </div>
+                                                <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>                                              
                                             </div>
                                         </div><!-- .nk-block-head-content -->
                                     </div><!-- .nk-block-between -->
@@ -385,6 +377,17 @@
                                                 </div>
                                             </div>
                                         </div>
+										<ul class="nav nav-tabs my-2 ml-1">
+											<li class="nav-item">
+												<a class="nav-link <?= $order == '' ? 'active': '' ?>" href="<?php echo base_url(); ?>index.php/kadis">Semua</a>
+											</li>
+											<li class="nav-item">
+												<a class="nav-link <?= $order == 'proses' ? 'active': '' ?>" href="<?php echo base_url(); ?>index.php/kadis?order=proses">Disposisi</a>
+											</li>
+											<li class="nav-item">
+												<a class="nav-link <?= $order == 'finish' ? 'active': '' ?>" href="<?php echo base_url(); ?>index.php/kadis?order=finish">Laporan</a>
+											</li>										
+										</ul>
                                         <table class="datatable-init nowrap nk-tb-list is-separate" data-auto-responsive="false">
                                             <thead>
                                                 <tr class="nk-tb-item nk-tb-head">
@@ -392,11 +395,11 @@
                                                     <th class="nk-tb-col tb-col-sm"><span>Nomor Berkas</span></th>
                                                     <th class="nk-tb-col tb-col-sm"><span>Tanggal Masuk</span></th>
                                                     <th class="nk-tb-col tb-col-sm"><span>Tanggal Expire</span></th>
-                                                     <th class="nk-tb-col tb-col-sm"><span>Nomor Surat Masuk</span></th>
-                                                      <th class="nk-tb-col tb-col-sm"><span>Asal Surat Masuk</span></th>
-                                                       <th class="nk-tb-col tb-col-sm"><span>Perihal</span></th>
-                                                        <th class="nk-tb-col tb-col-sm"><span>Status</span></th>
-                                                         <th class="nk-tb-col tb-col-sm"><span>Action</span></th>
+													<th class="nk-tb-col tb-col-sm"><span>Nomor Surat Masuk</span></th>
+													<th class="nk-tb-col tb-col-sm"><span>Asal Surat Masuk</span></th>
+													<th class="nk-tb-col tb-col-sm"><span>Perihal</span></th>
+													<th class="nk-tb-col tb-col-sm"><span>Status</span></th>
+													<th class="nk-tb-col tb-col-sm"><span>Action</span></th>
                                                     <th class="nk-tb-col nk-tb-col-tools">
                                                         <ul class="nk-tb-actions gx-1 my-n1">
                                                             <li class="mr-n1">
@@ -433,9 +436,14 @@
                                                     <td class="nk-tb-col">
                                                         <span class="tb-sub"><?=$data->status?></span>
                                                     </td>
-                                                    <td class="nk-tb-col">
-                                                        <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Disposisi">DIS</button>
-                                                        <button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Tracking">TRACK</button>
+                                                    <td class="nk-tb-col">														
+														<?php if ($order == ''): ?>
+                                                        <a href="<?php echo base_url(); ?>index.php/kadis/tambah" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Disposisi">DIS</a>
+														<?php endif; ?>
+
+														<?php if ($order != ''): ?>
+                                                        	<a href="#" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Tracking">TRACK</a>
+														<?php endif; ?>
                                                     </li>
                                                     </td>
                                                     <td class="nk-tb-col nk-tb-col-tools">
@@ -447,8 +455,7 @@
                                                                         <ul class="link-list-opt no-bdr">
                                                                             <li>
                                                                                 <a data-image-src="<?= base_url('assets/gambar/'. $data->gambar) ?>" class="button__img-preview" href="javascript:void(0);" data-toggle="modal" data-target="#modalDefault"><em class="icon ni ni-eye"></em> Lihat Lampiran Surat</a>
-                                                                            </li>
-                                                            
+                                                                            </li>                                                        
                                                                         </ul>
                                                                     </div>
                                                                 </div>
@@ -512,7 +519,7 @@
 
     <!-- JavaScript -->
     <script src="<?php echo base_url(); ?>assets/js/bundle.js?ver=2.2.0"></script>
-    <script src="<?php echo base_url(); ?>assets/js/scripts.js?ver=2.2.0"></script>
+    <script src="<?php echo base_url(); ?>assets/js/scripts.js?ver=2.2.1"></script>
     <script src="<?php echo base_url(); ?>assets/js/charts/chart-ecommerce.js?ver=2.2.0"></script>
 
     <script>

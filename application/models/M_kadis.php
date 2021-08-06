@@ -8,6 +8,39 @@ class M_kadis extends CI_Model{
 
         return $query->result();
     }
+
+	public function getByOder($order)
+	{
+		$idUser = $this->session->userdata('id_user');
+
+		$sql =<<<SQL
+			SELECT s.* FROM
+				surat_masuk s INNER JOIN disposisi d
+				ON s.id_sm = d.id_sm								
+		SQL;
+
+		if (strlen($order) === 0) {
+			$sql .=<<<SQL
+				WHERE s.status IS NULL;
+			SQL;
+		}
+
+		if ($order == 'proses') {
+			$sql .=<<<SQL
+				WHERE s.status = 'Proses';
+			SQL;
+		}
+
+		if ($order == 'finish') {
+			$sql .=<<<SQL
+				WHERE s.status = 'finish';
+			SQL;
+		}
+		
+		return $this->db->query($sql);
+						
+	}
+
     public function get($id = null)
     {
         $this->db->select('*');

@@ -96,7 +96,7 @@
 
 
   NioApp.CurrentLink = function () {
-    var _link = '.nk-menu-link, .menu-link, .nav-link',
+    var _link = '.nk-menu-link, .menu-link',
         _currentURL = window.location.href,
         fileName = _currentURL.substring(0, _currentURL.indexOf("#") == -1 ? _currentURL.length : _currentURL.indexOf("#")),
         fileName = fileName.substring(0, fileName.indexOf("?") == -1 ? fileName.length : fileName.indexOf("?"));
