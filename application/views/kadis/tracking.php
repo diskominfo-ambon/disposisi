@@ -474,35 +474,35 @@
     <!-- app-root @e -->
 
     <div class="modal fade" tabindex="-1" id="modalDefault">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <a href="#" class="close" data-dismiss="modal" aria-label="Close">
-                <em class="icon ni ni-cross"></em>
-            </a>
-            <div class="modal-header">
-                <h5 class="modal-title">Gambar</h5>
-            </div>
-            <div class="modal-body">
-                <div class="timeline">
-                    <ul class="timeline-list" id="timeline-list">
-                        <li class="timeline-item">
-                            <div class="timeline-status bg-primary is-outline"></div>
-                            <div class="timeline-date">13 Nov <em class="icon ni ni-alarm-alt"></em></div>
-                            <div class="timeline-data">
-                                <h6 class="timeline-title">Submited KYC Application</h6>
-                                <div class="timeline-des">
-                                    <p>Re-submitted KYC Application form.</p>
-                                    <span class="time">09:30am</span>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            
-        </div>
-    </div>
-</div>
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<a href="#" class="close" data-dismiss="modal" aria-label="Close">
+					<em class="icon ni ni-cross"></em>
+				</a>
+				<div class="modal-header">
+					<h5 class="modal-title">Gambar</h5>
+				</div>
+				<div class="modal-body">
+					<div class="timeline">
+						<ul class="timeline-list" id="timeline-list">
+							<li class="timeline-item">
+								<div class="timeline-status bg-primary is-outline"></div>
+								<div class="timeline-date">13 Nov <em class="icon ni ni-alarm-alt"></em></div>
+								<div class="timeline-data">
+									<h6 class="timeline-title">Submited KYC Application</h6>
+									<div class="timeline-des">
+										<p>Re-submitted KYC Application form.</p>
+										<span class="time">09:30am</span>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
 
     <!-- JavaScript -->
     <script src="<?php echo base_url(); ?>assets/js/bundle.js?ver=2.2.0"></script>

@@ -463,6 +463,7 @@
     <script src="<?php echo base_url(); ?>assets/js/bundle.js?ver=2.2.0"></script>
     <script src="<?php echo base_url(); ?>assets/js/scripts.js?ver=2.2.0"></script>
     <script src="<?php echo base_url(); ?>assets/js/charts/chart-ecommerce.js?ver=2.2.0"></script>
+	
     <script>
         $(document).ready(() => {
             $('#field__id-sm').on('change', function () {
