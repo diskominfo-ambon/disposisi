@@ -1,7 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+require_once __DIR__.'/Auth.php';
+
 class Sekertaris extends CI_Controller {
+
+	use Auth;
 
 	function __construct()
 	{
@@ -17,8 +21,9 @@ class Sekertaris extends CI_Controller {
 	{
 		
 		$data ['row'] = $this->m_sekertaris->all();
+		$user = $this->currentUser();
 		
-		$this->load->view('sekertaris/beranda', $data);
+		$this->load->view('sekertaris/beranda', array_merge($data, ['user' => $user]));
 	}
 
 	public function tambah ()
@@ -55,9 +60,10 @@ class Sekertaris extends CI_Controller {
 		if (!$this->form_validation->run() && !$this->upload->do_upload('imagee')) {
 
 				$sifat_surat = $this->m_ss->all();
+				$user = $this->currentUser();
 				$error = $this->upload->display_errors();
 
-				$this->load->view('sekertaris/surat_masuk', compact('sifat_surat', 'error'));
+				$this->load->view('sekertaris/surat_masuk', compact('sifat_surat', 'error', 'user'));
 		}else{
 
 			$post = array_merge($_POST, ['imagee' => $this->upload->data()]);

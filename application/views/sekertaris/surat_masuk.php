@@ -156,7 +156,7 @@ function tampilkanPreview(imagee,idpreview)
                                                             </div>
                                                             <div class="chat-info">
                                                                 <div class="chat-from">
-                                                                    <div class="name">Abu Bin Ishtiyak</div>
+                                                                    <div class="name"><?= $user->nama ?></div>
                                                                     <span class="time">4:49 AM</span>
                                                                 </div>
                                                                 <div class="chat-context">
@@ -330,8 +330,8 @@ function tampilkanPreview(imagee,idpreview)
                                                     <em class="icon ni ni-user-alt"></em>
                                                 </div>
                                                 <div class="user-info d-none d-xl-block">
-                                                    <div class="user-status user-status-unverified">Unverified</div>
-                                                    <div class="user-name dropdown-indicator">Abu Bin Ishityak</div>
+                                                    <div class="user-status user-status-unverified">Sekertaris</div>
+                                                    <div class="user-name dropdown-indicator"><?= $user->nama ?></div>
                                                 </div>
                                             </div>
                                         </a>
@@ -342,8 +342,8 @@ function tampilkanPreview(imagee,idpreview)
                                                         <span>AB</span>
                                                     </div>
                                                     <div class="user-info">
-                                                        <span class="lead-text">Abu Bin Ishtiyak</span>
-                                                        <span class="sub-text">info@softnio.com</span>
+                                                        <span class="lead-text"><?= $user->nama ?></span>
+                                                        <span class="sub-text"><?= $user->email ?></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -382,20 +382,8 @@ function tampilkanPreview(imagee,idpreview)
                                             <div class="toggle-wrap nk-block-tools-toggle">
                                                 <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
                                                 <div class="toggle-expand-content" data-content="pageMenu">
-                                                    <ul class="nk-block-tools g-3">
-                                                        <li>
-                                                            <div class="drodown">
-                                                                <a href="#" class="dropdown-toggle btn btn-white btn-dim btn-outline-light" data-toggle="dropdown"><em class="d-none d-sm-inline icon ni ni-calender-date"></em><span><span class="d-none d-md-inline">Last</span> 30 Days</span><em class="dd-indc icon ni ni-chevron-right"></em></a>
-                                                                <div class="dropdown-menu dropdown-menu-right">
-                                                                    <ul class="link-list-opt no-bdr">
-                                                                        <li><a href="#"><span>Last 30 Days</span></a></li>
-                                                                        <li><a href="#"><span>Last 6 Months</span></a></li>
-                                                                        <li><a href="#"><span>Last 1 Years</span></a></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="nk-block-tools-opt"><a href="<?php echo base_url(); ?>index.php/sekertaris" class="btn btn-primary"><em class="icon ni ni-reports"></em><span>Kembali</span></a></li>
+                                                    <ul class="nk-block-tools g-3">                                                        
+                                                        <li class="nk-block-tools-opt"><a href="<?php echo base_url(); ?>index.php/sekertaris" class="btn btn-primary"><em class="icon ni ni-arrow-left"></em><span>Kembali</span></a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -491,17 +479,7 @@ function tampilkanPreview(imagee,idpreview)
                                                                   
                                                                 </div>
                                                             </div>
-                                                          <div class="form-group">
-                                                                <div class="form-control-wrap">
-                                                                    <label class="form-label" for="outlined-select">Status *</label>
-                                                                    <select class="form-select form-control form-control-xl" data-ui="xl" id="outlined-select" name="status">
-                                                                        <option value="default_option">--Pilih--</option>
-                                                                            <option>Proses</option>
-                                                                            <option>Selesai</option>
-                                                                    </select>
-    
-                                                                </div>
-                                                            </div>  
+            
                                                         </div>
                                                         
                                                         <div class="col-lg-6">
