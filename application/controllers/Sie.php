@@ -1,7 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+require_once __DIR__.'/Auth.php';
+
 class Sie extends CI_Controller {
+
+
+	use Auth;
 
 	function __construct()
 	{
@@ -15,7 +20,10 @@ class Sie extends CI_Controller {
 	{
 		
 		$data ['row'] = $this->m_sie->get();
-		$this->load->view('admin/sie', $data);
+		$user = $this->currentUser();
+
+	
+		$this->load->view('admin/sie', array_merge($data, ['user' => $user]));
 	}
 
 	public function tambah ()
@@ -29,7 +37,8 @@ class Sie extends CI_Controller {
 		$this->form_validation->set_error_delimiters('<span class="help-block">', '</span>');
 
 		if ($this->form_validation->run() == FALSE) {
-				$this->load->view('admin/tambah_sie');
+				$user = $this->currentUser();
+				$this->load->view('admin/tambah_sie', compact('user'));
 		}else{
 			$post = $this->input->post(null, TRUE);
 			$this->m_sie->tambah($post);

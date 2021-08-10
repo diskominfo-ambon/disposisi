@@ -4,19 +4,23 @@ class M_kasie extends CI_Model{
     
     public function all($id)
     {
+                
+		$sql =<<<SQL
+			SELECT s.*, ss.sifat_surat FROM
+				surat_masuk s RIGHT JOIN sifat_surat ss
+					ON s.id_ss = ss.id_ss
+				INNER JOIN disposisi d
+					ON s.id_sm = d.id_sm
+				WHERE d.id_pegawai = (
+					SELECT id_pegawai FROM pegawai 
+						WHERE id_user = $id
+				)
+				AND s.status = 'finish';
+
+		SQL;
         
-        $rawQuery = <<<SQL
-        SELECT sm.*, u.nama, ss.sifat_surat FROM surat_masuk sm 
-            INNER JOIN sifat_surat ss ON sm.id_ss = ss.id_ss
-            INNER JOIN disposisi d ON sm.id_sm = d.id_sm 
-            INNER JOIN pegawai p ON d.id_pegawai = p.id_pegawai
-            INNER JOIN user u ON p.id_user = u.id_user
-            WHERE u.id_user = $id;
-        SQL;
 
-        $query = $this->db->query($rawQuery);
-
-        return $query->result();
+		return $this->db->query($sql);       
     }
 
     public function tambah($post)

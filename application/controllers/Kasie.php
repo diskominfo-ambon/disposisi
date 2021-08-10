@@ -1,7 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+require_once __DIR__.'/Auth.php';
+
 class kasie extends CI_Controller {
+
+	use Auth;
 
 	function __construct()
 	{
@@ -16,9 +20,10 @@ class kasie extends CI_Controller {
 	public function index()
 	{
 		$idUser = $this->session->userdata('id_user');
-		$data ['row'] = $this->m_kasie->all($idUser);
-	
-		$this->load->view('kasie/home', $data);
+		$data ['row'] = $this->m_kasie->all($idUser)->result();
+		$user = $this->currentUser();
+
+		$this->load->view('kasie/home', array_merge($data, ['user' => $user]));
 	}
 
 	public function show($id) {
@@ -39,11 +44,12 @@ class kasie extends CI_Controller {
 		
 		if ($this->form_validation->run() == FALSE) {
 				$userId = $this->session->userdata('id_user');
+				$user = $this->currentUser();
 				$sekertaris = $this->m_sekertaris->all($userId);
 				$pegawai 	= $this->m_pegawai->findAllBidangByUserId($userId);
 
 		
-				return $this->load->view('kasie/disposisi', compact('sekertaris', 'pegawai','userId'));
+				return $this->load->view('kasie/disposisi', compact('sekertaris', 'pegawai','userId', 'user'));
 		}else{
 			$post = $_POST;
 			$this->m_kasie->tambah($post);
