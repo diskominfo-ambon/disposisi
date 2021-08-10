@@ -15,7 +15,7 @@ class M_kasie extends CI_Model{
 					SELECT id_pegawai FROM pegawai 
 						WHERE id_user = $id
 				)
-				AND s.status = 'Prosess';
+				AND s.status = 'Proses';
 
 		SQL;
         
