@@ -44,7 +44,7 @@ class M_sekertaris extends CI_Model{
             'asal_sm'               => $post['asal_sm'],
             // 'tanggal_expire'        => $post['tanggal_expire'],
             'lampiran'              => $post['lampiran'],
-            'status'                => $post['status'],
+            'status'                => null,
             'judul_surat'           => $post['judul_surat'],
             'id_ss'                 => $post['id_ss'],
             'gambar'                => $post['imagee']['file_name']

@@ -8,15 +8,34 @@ class M_bidang extends CI_Model{
 
         return $query->result();
     }
-    public function get($id = null)
+    public function get($order = 'proses')
     {
-        $this->db->select('*');
-        $this->db->from('bidang');
-        if ($id != null) {
-            $this->db->where('id_bidang', $id);
-        }
-        $query = $this->db->get();
-        return $query;
+
+		$idUser = $this->session->userdata('id_user');
+
+		$sql =<<<SQL
+			SELECT DISTINCT s.* FROM
+				surat_masuk s LEFT JOIN disposisi d
+				ON s.id_sm = d.id_sm
+				AND d.id_pegawai = (
+					SELECT id_pegawai FROM pegawai
+						WHERE id_user = $idUser
+				)					
+		SQL;
+
+		if ($order == 'proses') {
+			$sql .=<<<SQL
+				AND s.status = 'Proses';
+			SQL;
+		}
+
+		if ($order == 'finish') {
+			$sql .=<<<SQL
+				AND s.status = 'finish';
+			SQL;
+		}
+
+		return $this->db->query($sql);
     }
 
     public function tambah($post)

@@ -385,7 +385,7 @@
                                                             <div class="form-group">
                                                                 <div class="form-control-wrap">
                                                                     <select class="form-select form-control form-control-xl" data-ui="xl" id="field__id-sm" name="id_sm">
-                                                                        <option value="default_option">--Pilih--</option>
+                                                                        <option value="">--Pilih--</option>
                                                                         <?php foreach($sekertaris as $seker): ?>
 																			<?php if (isset($_GET['id_sm']) && $_GET['id_sm'] == $seker->id_sm): ?>
 																				<option value="<?= $seker->id_sm ?>" selected><?= $seker->perihal ?></option>

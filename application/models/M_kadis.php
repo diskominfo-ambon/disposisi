@@ -64,12 +64,12 @@ class M_kadis extends CI_Model{
 			->update('surat_masuk');
 
         foreach ($post['id_pegawai'] as $id) {
-            $body[] = array_merge(
-                $post,
-                [
-                    'id_pegawai' => $id
-                ]
-            );
+            $body[] = [
+				'instruksi' => $post['instruksi'],
+				'id_sm' => $post['id_sm'],
+				'id_pegawai' => $id
+			];
+            
         }
 
         $this->db->insert_batch('disposisi', $body);

@@ -24,6 +24,7 @@ class Kabid extends CI_Controller {
 		$order = $_GET['order'] ?? '';
 		$data ['row'] = $this->m_kabid->getByOder($idUser, $order);	
 		$user = $this->currentUser();
+
 	
 		$this->load->view('kabid/home', array_merge($data, compact('order', 'user')));
 	}

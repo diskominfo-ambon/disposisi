@@ -346,12 +346,9 @@
                                     </div><!-- .nk-block-between -->
                                 </div><!-- .nk-block-head -->
                                 <!-- Content -->
-								<ul class="nav nav-tabs ml-1">
+								<ul class="nav nav-tabs ml-1">									
 									<li class="nav-item">
-										<a class="nav-link <?= $order == '' ? 'active': '' ?>" href="<?php echo base_url(); ?>index.php/kabid">Semua</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link <?= $order == 'proses' ? 'active': '' ?>" href="<?php echo base_url(); ?>index.php/kabid?order=proses">Disposisi</a>
+										<a class="nav-link <?= $order == '' ? 'active': '' ?>" href="<?php echo base_url(); ?>index.php/kabid">Disposisi</a>
 									</li>
 									<li class="nav-item">
 										<a class="nav-link <?= $order == 'finish' ? 'active': '' ?>" href="<?php echo base_url(); ?>index.php/kabid?order=finish">Laporan</a>

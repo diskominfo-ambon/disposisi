@@ -20,7 +20,7 @@ class M_kabid extends CI_Model{
         return $query->result();
     }
 
-	public function getByOder($id, $order)
+	public function getByOder($id, $order = 'prosess')
 	{
 		$sql =<<<SQL
 			SELECT DISTINCT s.*, ss.sifat_surat FROM
@@ -35,12 +35,6 @@ class M_kabid extends CI_Model{
 					)
 
 		SQL;
-
-		if (strlen($order) === 0) {
-			$sql .=<<<SQL
-				WHERE s.status IS NULL;
-			SQL;
-		}
 
 		if ($order == 'proses') {
 			$sql .=<<<SQL
