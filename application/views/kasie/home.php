@@ -421,6 +421,11 @@
                                                                             <li>
                                                                                 <a data-image-src="<?= base_url('assets/gambar/'. $data->gambar) ?>" class="button__img-preview" href="javascript:void(0);" data-toggle="modal" data-target="#modalDefault"><em class="icon ni ni-eye"></em> Lihat data</a>
                                                                             </li>
+																			<?php if ($order === 'finish'): ?>
+																			<li>
+																				<a data-id-sm="<?= $data->id_sm ?>" class="btn__traking" href="javascript:void(0);"><em class="icon ni ni-eye"></em> Lacak</a>
+																			</li>
+																			<?php endif; ?>
 																			<?php if ($order === ''): ?>
                                                                             	<li><a href="<?=site_url('kasie/tambah?id_sm='. $data->id_sm)?>"><em class="icon ni ni-book"></em><span>Lanjut disposisi</span></a></li>
 																			<?php endif; ?>                                                                                                                                                    
@@ -486,19 +491,104 @@
     </div>
 </div>
 
+<div class="modal fade" tabindex="-1" id="modalTracking">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<a href="#" class="close" data-dismiss="modal" aria-label="Close">
+					<em class="icon ni ni-cross"></em>
+				</a>
+				<div class="modal-header">
+					<h5 class="modal-title">Gambar</h5>
+				</div>
+				<div class="modal-body">
+					<div class="timeline">
+						<ul class="timeline-list" id="timeline-list">
+							<li class="timeline-item">
+								<div class="timeline-status bg-primary is-outline"></div>
+								<div class="timeline-date">13 Nov <em class="icon ni ni-alarm-alt"></em></div>
+								<div class="timeline-data">
+									<h6 class="timeline-title">Submited KYC Application</h6>
+									<div class="timeline-des">
+										<p>Re-submitted KYC Application form.</p>
+										<span class="time">09:30am</span>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+
     <!-- JavaScript -->
     <script src="<?php echo base_url(); ?>assets/js/bundle.js?ver=2.2.0"></script>
     <script src="<?php echo base_url(); ?>assets/js/scripts.js?ver=2.2.0"></script>
     <script src="<?php echo base_url(); ?>assets/js/charts/chart-ecommerce.js?ver=2.2.0"></script>
-
-    <script>
+	<script>
         $(document).ready(() => {
-            $('.button__img-preview').click(function () {
-                const {imageSrc} = $(this).data();
 
-                $('#modal__img-preview').attr('src', imageSrc);
+            function renderTimelineList(data) {
+                const date = new Date(data.tanggal);
+                const dateFull = new Intl.DateTimeFormat('id-ID', { dateStyle: 'full', timeStyle: 'short' }).format(date);
+                const dateShort = new Intl.DateTimeFormat('id-ID', { dateStyle: 'short' }).format(date); 
 
-            })
+                return `
+                    <li class="timeline-item">
+                        <div class="timeline-status bg-primary is-outline"></div>
+                        <div class="timeline-date">${dateShort} <em class="icon ni ni-alarm-alt"></em></div>
+                        <div class="timeline-data">
+                            <h6 class="timeline-title">${data.instruksi}</h6>
+                            <div class="timeline-des">
+                                <p>${data.nama_jabatan} - ${data.nama}</p>
+                                 <span class="time">${dateFull}</span>
+                            </div>
+                        </div>
+                    </li>
+                `;
+            }
+
+            $('.btn__traking').click(function () {
+                const idSm = $(this).data().idSm;
+
+                const uri = `${window.location.origin}/disposisi/index.php/tracking/ajax_tracking/${idSm}`;
+                console.log({uri});
+
+                fetch(uri)
+                    .then(res => res.json())
+                    .then(({success, data: payload}) => {
+                        // data history.
+                        console.log({success, payload});
+
+                        if (!success) {
+                            alert('Terjadi keslahan memuat!');
+                            return;
+                        }
+
+                        const html = payload.map(data => {
+                            return renderTimelineList(data);
+                        });
+
+                        $('#timeline-list').html(html.join(''));
+
+                        // luncurkan modal.
+                        $('#modalTracking').modal();
+                    })
+
+                
+
+            });
+
+			$(document).ready(() => {
+				$('.button__img-preview').click(function () {
+					const {imageSrc} = $(this).data();
+
+					$('#modal__img-preview').attr('src', imageSrc);
+
+				});
+			});
+          
         });
     </script>
 </body>
