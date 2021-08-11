@@ -18,12 +18,17 @@ class kasie extends CI_Controller {
 	}
 
 	public function index()
-	{
-		$idUser = $this->session->userdata('id_user');
-		$data ['row'] = $this->m_kasie->all($idUser)->result();
+	{		
+		$order = '';
+		if (isset($_GET['order']) && !empty($_GET['order']) && $_GET['order'] === 'finish') {
+			$order = 'finish';
+		}
+
+		$data ['row'] = $this->m_kasie->getByOrder($order)->result();
 		$user = $this->currentUser();
 
-		$this->load->view('kasie/home', array_merge($data, ['user' => $user]));
+		
+		$this->load->view('kasie/home', array_merge($data, ['user' => $user, 'order' => $order]));
 	}
 
 	public function show($id) {

@@ -26,7 +26,7 @@ class M_pegawai extends CI_Model{
                     SELECT id_bidang FROM pegawai 
                         WHERE id_user = $id
                 )
-                AND id_user != $id AND id_sie = 0;
+                AND id_user != $id AND id_sie != 0;
         SQL;
 
         return $this->db->query($query)->result();

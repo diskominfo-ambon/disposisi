@@ -339,20 +339,21 @@
                                         </div><!-- .nk-block-head-content -->
                                         <div class="nk-block-head-content">
                                             <div class="toggle-wrap nk-block-tools-toggle">
-                                                <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
-                                                <div class="toggle-expand-content" data-content="pageMenu">
-                                                    <ul class="nk-block-tools g-3">
-                                                        <li>
-                                                            
-                                                        </li>
-                                                        <li class="nk-block-tools-opt"><a href="<?php echo base_url(); ?>index.php/kasie/tambah" class="btn btn-primary"><em class="icon ni ni-reports"></em><span>Laporan</span></a></li>
-                                                    </ul>
-                                                </div>
+                                                <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>                                                
                                             </div>
                                         </div><!-- .nk-block-head-content -->
                                     </div><!-- .nk-block-between -->
                                 </div><!-- .nk-block-head -->
                                 <!-- Content -->
+
+								<ul class="nav nav-tabs ml-1">									
+									<li class="nav-item">
+										<a class="nav-link <?= $order == '' ? 'active': '' ?>" href="<?php echo base_url(); ?>index.php/kasie">Disposisi</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link <?= $order == 'finish' ? 'active': '' ?>" href="<?php echo base_url(); ?>index.php/kasie?order=finish">Laporan</a>
+									</li>										
+								</ul>
 
                                 <div class="nk-block nk-block-lg">
                                         <div class="nk-block-head">
@@ -420,9 +421,9 @@
                                                                             <li>
                                                                                 <a data-image-src="<?= base_url('assets/gambar/'. $data->gambar) ?>" class="button__img-preview" href="javascript:void(0);" data-toggle="modal" data-target="#modalDefault"><em class="icon ni ni-eye"></em> Lihat data</a>
                                                                             </li>
-                                                                            <li><a href="<?=site_url('kasie/update/'.$data->id_sm)?>"><em class="icon ni ni-edit"></em><span>Edit Data</span></a></li>
-                                                                          
-                                                                            <li><a href="<?=site_url('kasie/delete/'.$data->id_sm)?>" onclick="return confirm('Yakin Hapus?')" name="id_sm" method="post" ><em class="icon ni ni-trash"></em><span>Hapus Data</span></a></li>
+																			<?php if ($order === ''): ?>
+                                                                            	<li><a href="<?=site_url('kasie/tambah?id_sm='. $data->id_sm)?>"><em class="icon ni ni-book"></em><span>Lanjut disposisi</span></a></li>
+																			<?php endif; ?>                                                                                                                                                    
                                                                         </ul>
                                                                     </div>
                                                                 </div>

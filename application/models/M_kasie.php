@@ -23,6 +23,36 @@ class M_kasie extends CI_Model{
 		return $this->db->query($sql);       
     }
 
+
+	public function getByOrder($order) {
+		$id = $this->session->userdata('id_user');
+
+		$sql =<<<SQL
+			SELECT s.*, ss.sifat_surat FROM
+				surat_masuk s RIGHT JOIN sifat_surat ss
+					ON s.id_ss = ss.id_ss
+				INNER JOIN disposisi d
+					ON s.id_sm = d.id_sm
+				WHERE d.id_pegawai = (
+					SELECT id_pegawai FROM pegawai 
+						WHERE id_user = $id
+				)				
+
+		SQL;
+
+		if (empty($order)) {
+			$sql .=<<<SQL
+				AND s.status = 'Proses';
+			SQL;
+		} else {
+			$sql .=<<<SQL
+				AND s.status = 'finish';
+			SQL;
+		}
+
+		return $this->db->query($sql);  
+	}
+
     public function tambah($post)
     {
         

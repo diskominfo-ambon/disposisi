@@ -154,7 +154,7 @@ function tampilkanPreview(imagee,idpreview)
                                                             </div>
                                                             <div class="chat-info">
                                                                 <div class="chat-from">
-                                                                    <div class="name">Abu Bin Ishtiyak</div>
+                                                                    <div class="name"><?= $user->nama ?></div>
                                                                     <span class="time">4:49 AM</span>
                                                                 </div>
                                                                 <div class="chat-context">
@@ -328,8 +328,8 @@ function tampilkanPreview(imagee,idpreview)
                                                     <em class="icon ni ni-user-alt"></em>
                                                 </div>
                                                 <div class="user-info d-none d-xl-block">
-                                                    <div class="user-status user-status-unverified">Unverified</div>
-                                                    <div class="user-name dropdown-indicator">Abu Bin Ishityak</div>
+                                                    <div class="user-status user-status-unverified">Kasie</div>
+                                                    <div class="user-name dropdown-indicator"><?= $user->nama ?></div>
                                                 </div>
                                             </div>
                                         </a>
@@ -340,8 +340,8 @@ function tampilkanPreview(imagee,idpreview)
                                                         <span>AB</span>
                                                     </div>
                                                     <div class="user-info">
-                                                        <span class="lead-text">Abu Bin Ishtiyak</span>
-                                                        <span class="sub-text">info@softnio.com</span>
+                                                        <span class="lead-text"><?= $user->nama ?></span>
+                                                        <span class="sub-text"><?= $user->email ?></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -384,7 +384,7 @@ function tampilkanPreview(imagee,idpreview)
                                                         <li>
                                                             
                                                         </li>
-                                                        <li class="nk-block-tools-opt"><a href="<?php echo base_url(); ?>index.php/kabid" class="btn btn-primary"><em class="icon ni ni-reports"></em><span>Kembali</span></a></li>
+                                                        <li class="nk-block-tools-opt"><a href="<?php echo base_url(); ?>index.php/kasie" class="btn btn-primary"><em class="icon ni ni-arrow-left"></em><span>Kembali</span></a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -416,7 +416,12 @@ function tampilkanPreview(imagee,idpreview)
                                                                     <select class="form-select form-control form-control-xl" data-ui="xl" id="field__id-sm" name="id_sm" >
                                                                         <option value="default_option">--Pilih--</option>
                                                                         <?php foreach($sekertaris as $seker): ?>
-                                                                            <option value="<?= $seker->id_sm ?>" option_select_name"><?= $seker->judul_surat ?></option>
+																			<?php if ( isset($_GET['id_sm']) && $seker->id_sm == $_GET['id_sm']): ?>
+																				<option selected value="<?= $seker->id_sm ?>"><?= $seker->judul_surat ?></option>
+																			<?php 
+																				continue;
+																				endif; ?>
+                                                                            <option value="<?= $seker->id_sm ?>"><?= $seker->judul_surat ?></option>
                                                                         <?php endforeach; ?>                                                                </select>
                                                                     <label class="form-label-outlined" for="outlined-select">Judul Surat Masuk</label>
                                                                 </div>
@@ -438,19 +443,17 @@ function tampilkanPreview(imagee,idpreview)
                                                         </div>
                                                         <div class="col-lg-6">
                                                             <img id="preview_image" style="border-radius: 4px; width: 400px; object-fit: auto;" src="<?= base_url('assets/gambar/   ') ?>" />
-                                                        </div>
+                                                    </div>
                                                             
-                                                        </div>
-                                                        
-                                                        </div>
-                                                        </div>
-                                                        </div><!-- .foem-group -->
-                                                        <div class="col-12">
-                                                            <div class="form-group">
-                                                                <button type="submit" class="btn btn-lg btn-primary">Input Laporan</button>
-                                                                <button type="reset" class="btn btn-lg btn-primary">Reset</button>
-                                                            </div>
-                                                        </div>
+                                                       
+                                                       <div class="row mt-4">
+														<div class="col-12">
+																<div class="form-group">
+																	<button type="submit" class="btn btn-lg btn-primary">Input Laporan</button>
+																	<button type="reset" class="btn btn-lg btn-primary">Reset</button>
+																</div>
+															</div>
+													   </div>
                                                     </div>
                                                 </form>
                                             </div>
