@@ -58,10 +58,10 @@ class M_kasie extends CI_Model{
         $this->db->insert('disposisi', $post);
         // tambahkan ke disposisi untuk merujuk kembali ke user tententu.
 
-        $this->db->where('id_sm', $post['id_sm']);
-        $this->db->update('surat_masuk', [
-            'status' => 'finish'
-        ]);
+        // $this->db->where('id_sm', $post['id_sm']);
+        // $this->db->update('surat_masuk', [
+        //     'status' => 'finish'
+        // ]);
         // rubah status surat ke 'selesai'
     }
 

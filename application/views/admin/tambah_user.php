@@ -417,7 +417,7 @@
                                                                     <select class="form-select form-control form-control-xl" data-ui="xl" id="outlined-select" name="level">
                                                                         <option value="default_option">--Pilih--</option>
                                                                         <option value="1"option_select_name">Admin</option>
-                                                                        <option value="2"option_select_name">Sekertaris</option>
+                                                                        <option value="2"option_select_name">Sekertariat</option>
                                                                         <option value="3"option_select_name">Kadis</option>
                                                                         <option value="4"option_select_name">Sekdis</option>
                                                                         <option value="5"option_select_name">Kabid</option>

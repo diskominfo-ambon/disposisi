@@ -1,6 +1,6 @@
 <?php
 
-class M_kabid extends CI_Model{
+class M_sekertariat extends CI_Model{
     
     public function all($id)
     {
@@ -20,7 +20,7 @@ class M_kabid extends CI_Model{
         return $query->result();
     }
 
-	public function getByOder($id, $order)
+	public function getByOder($id, $order = 'prosess')
 	{
 		$sql =<<<SQL
 			SELECT DISTINCT s.*, ss.sifat_surat FROM
@@ -36,9 +36,7 @@ class M_kabid extends CI_Model{
 
 		SQL;
 
-
-
-		if (empty($order)) {
+		if ($order == 'proses') {
 			$sql .=<<<SQL
 				WHERE s.status = 'Proses';
 			SQL;
@@ -50,8 +48,6 @@ class M_kabid extends CI_Model{
 			SQL;
 		}
 		
-
-
 		return $this->db->query($sql)->result();
 	}
 

@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 require_once __DIR__.'/Auth.php';
 
-class Kabid extends CI_Controller {
+class Sekertariat extends CI_Controller {
 
 	use Auth;
 
@@ -12,7 +12,7 @@ class Kabid extends CI_Controller {
 	{
 		parent::__construct();
 		// check_not_login();
-		$this->load->model('m_kabid');
+		$this->load->model('m_sekertariat');
 		$this->load->model('m_sekertaris');
 		$this->load->model('m_pegawai');
 		$this->load->library('form_validation');
@@ -22,12 +22,11 @@ class Kabid extends CI_Controller {
 	{
 		$idUser = $this->session->userdata('id_user');
 		$order = $_GET['order'] ?? '';
-		
-		$data ['row'] = $this->m_kabid->getByOder($idUser, $order);	
+		$data ['row'] = $this->m_sekertariat->getByOder($idUser, $order);	
 		$user = $this->currentUser();
-		
+
 	
-		$this->load->view('kabid/home', array_merge($data, compact('order', 'user')));
+		$this->load->view('sekertariat/home', array_merge($data, compact('order', 'user')));
 	}
 
 	public function show($id) {
@@ -56,7 +55,7 @@ class Kabid extends CI_Controller {
 				$userId = $this->session->userdata('id_user');
 				$user = $this->currentUser();
 
-				$this->load->view('kabid/disposisi', compact('sekertaris', 'pegawai', 'userId', 'user'));
+				$this->load->view('sekertariat/disposisi', compact('sekertaris', 'pegawai', 'userId', 'user'));
 		}else{
 			$post = $_POST;
 			if ($this->m_kabid->tambah($post) === false) {
