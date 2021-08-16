@@ -6,7 +6,7 @@ class M_bidang extends CI_Model{
     {
         $query = $this->db->get('bidang');
 
-        return $query->result();
+        return $query;
     }
     public function get($order = 'proses')
     {

@@ -14,10 +14,9 @@ class Bidang extends CI_Controller {
 	public function index()
 	{
 		
-		$data ['row'] = $this->m_bidang->get('prosess');
+		$data ['row'] = $this->m_bidang->all('prosess');
 
-		var_dump($data ['row']);
-		die();
+		
 		$this->load->view('admin/bidang', $data);
 	}
 
