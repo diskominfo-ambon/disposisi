@@ -20,7 +20,7 @@ class Pegawai extends CI_Controller {
 		$id_user = $this->session->userdata('id_user');
 		$user_data = $this->m_login->get($id_user)->row();
 		$data ['row'] = $this->m_pegawai->get();
-		$this->load->view('admin/pegawai', $data, ['user' => $user_data]);
+		$this->load->view('admin/pegawai', array_merge($data, ['user' => $user_data]));
 	}
 
 	public function tambah ()

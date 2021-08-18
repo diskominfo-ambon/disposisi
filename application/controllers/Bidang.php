@@ -8,16 +8,19 @@ class Bidang extends CI_Controller {
 		parent::__construct();
 		// check_not_login();
 		$this->load->model('m_bidang');
+		$this->load->model('m_bidang');
+		$this->load->model('m_login');
+		$this->load->model('m_sie');
 		$this->load->library('form_validation');
 	}
 
 	public function index()
 	{
-		
+		$this->load->model('m_login');
+		$id_user = $this->session->userdata('id_user');
+		$user_data = $this->m_login->get($id_user)->row();
 		$data ['row'] = $this->m_bidang->all('prosess');
-
-		
-		$this->load->view('admin/bidang', $data);
+		$this->load->view('admin/bidang', array_merge($data, ['user' => $user_data]));
 	}
 
 

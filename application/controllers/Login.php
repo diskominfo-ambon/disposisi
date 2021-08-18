@@ -35,7 +35,7 @@ class Login extends CI_Controller {
 					case 1:
 						return redirect('home');
 					case 2:
-						return redirect('sekertariat');
+						return redirect('sekertaris');
 					case 3:
 						return redirect('kadis');
 					case 4:
