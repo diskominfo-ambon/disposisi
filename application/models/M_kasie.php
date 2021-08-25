@@ -83,8 +83,6 @@ class M_kasie extends CI_Model{
 			->query($sql)
 			->result();
 
-		var_dump($pegawai);
-		die();
 
 		$body = [];
 
