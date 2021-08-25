@@ -18,7 +18,7 @@ class kasie extends CI_Controller {
 	}
 
 	public function index()
-	{		
+	{
 		$order = '';
 		if (isset($_GET['order']) && !empty($_GET['order']) && $_GET['order'] === 'finish') {
 			$order = 'finish';
@@ -27,7 +27,7 @@ class kasie extends CI_Controller {
 		$data ['row'] = $this->m_kasie->getByOrder($order)->result();
 		$user = $this->currentUser();
 
-		
+
 		$this->load->view('kasie/home', array_merge($data, ['user' => $user, 'order' => $order]));
 	}
 
@@ -41,23 +41,21 @@ class kasie extends CI_Controller {
 	public function tambah()
 	{
 
-		$this->form_validation->set_rules('instruksi', 'Instruksi', 'required');
+		$this->form_validation->set_rules('instruksi', 'Laporan', 'required');
 		$this->form_validation->set_rules('id_sm', 'Kode surat masuk', 'required');
 		$this->form_validation->set_message('required', '%s masih kosong, silahkan isi');
 
 		$this->form_validation->set_error_delimiters('<span class="help-block">', '</span>');
-		
+
 		if ($this->form_validation->run() == FALSE) {
 				$userId = $this->session->userdata('id_user');
 				$user = $this->currentUser();
-				$sekertaris = $this->m_sekertaris->all($userId);
-				$pegawai 	= $this->m_pegawai->findAllBidangByUserId($userId);
+				$sekertaris = $this->m_kasie->getByOrder('Prosess')->result();
 
-		
-				return $this->load->view('kasie/disposisi', compact('sekertaris', 'pegawai','userId', 'user'));
+				return $this->load->view('kasie/laporan', compact('sekertaris','userId', 'user'));
 		}else{
 			$post = $_POST;
-			$this->m_kasie->tambah($post);
+			$this->m_kasie->update($post);
 
 			if ($this->db->affected_rows() > 0) {
 				echo "<script>alert('Data Berhasil diposisi kembali');</script>";

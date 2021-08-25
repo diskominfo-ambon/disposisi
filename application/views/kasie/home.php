@@ -48,7 +48,7 @@
                                         <span class="nk-menu-text">Surat Masuk</span>
                                     </a>
                                 </li>
-                                                                
+
                             </ul><!-- .nk-menu -->
                         </div><!-- .nk-sidebar-menu -->
                     </div><!-- .nk-sidebar-content -->
@@ -126,26 +126,26 @@
                                         </div><!-- .nk-block-head-content -->
                                         <div class="nk-block-head-content">
                                             <div class="toggle-wrap nk-block-tools-toggle">
-                                                <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>                                                
+                                                <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
                                             </div>
                                         </div><!-- .nk-block-head-content -->
                                     </div><!-- .nk-block-between -->
                                 </div><!-- .nk-block-head -->
                                 <!-- Content -->
 
-								<ul class="nav nav-tabs ml-1">									
+								<ul class="nav nav-tabs ml-1">
 									<li class="nav-item">
 										<a class="nav-link <?= $order == '' ? 'active': '' ?>" href="<?php echo base_url(); ?>index.php/kasie">Disposisi</a>
 									</li>
 									<li class="nav-item">
 										<a class="nav-link <?= $order == 'finish' ? 'active': '' ?>" href="<?php echo base_url(); ?>index.php/kasie?order=finish">Laporan</a>
-									</li>										
+									</li>
 								</ul>
 
                                 <div class="nk-block nk-block-lg">
                                         <div class="nk-block-head">
-                                            
-                                            
+
+
                                         </div>
                                         <table class="datatable-init nowrap nk-tb-list is-separate" data-auto-responsive="false">
                                             <thead>
@@ -211,12 +211,14 @@
                                                                             <?php endif; ?>
                                                                                 <a data-image-src="<?= base_url('assets/gambar/'. $data->gambar) ?>" class="button__img-preview" href="javascript:void(0);" data-toggle="modal" data-target="#modalDefault"><em class="icon ni ni-eye"></em> Lihat data</a>
                                                                             </li>
-																			<?php if ($order === 'finish'): ?>
+
 																			<li>
 																				<a data-id-sm="<?= $data->id_sm ?>" class="btn__traking" href="javascript:void(0);"><em class="icon ni ni-eye"></em> Lacak</a>
 																			</li>
+
+																			<?php if ($order === ''): ?>
+                                                                            	<li><a href="<?=site_url('kasie/tambah?id_sm='. $data->id_sm)?>"><em class="icon ni ni-book"></em><span>Buat laporan</span></a></li>
 																			<?php endif; ?>
-																			                                                                                                                                                    
                                                                         </ul>
                                                                     </div>
                                                                 </div>
@@ -224,7 +226,7 @@
                                                         </ul>
                                                     </td>
                                                 </tr><!-- .nk-tb-item -->
-                                            
+
                                             <?php
                                             } ?>
                                             </tbody>
@@ -274,7 +276,7 @@
             <div class="modal-body">
                 <img src="" alt="" style="width: 500px; object-fit: auto; border-radius: 3px;" id="modal__img-preview"/>
             </div>
-            
+
         </div>
     </div>
 </div>
@@ -305,7 +307,7 @@
 						</ul>
 					</div>
 				</div>
-				
+
 			</div>
 		</div>
 	</div>
@@ -320,7 +322,7 @@
             function renderTimelineList(data) {
                 const date = new Date(data.tanggal);
                 const dateFull = new Intl.DateTimeFormat('id-ID', { dateStyle: 'full', timeStyle: 'short' }).format(date);
-                const dateShort = new Intl.DateTimeFormat('id-ID', { dateStyle: 'short' }).format(date); 
+                const dateShort = new Intl.DateTimeFormat('id-ID', { dateStyle: 'short' }).format(date);
 
                 return `
                     <li class="timeline-item">
@@ -364,7 +366,7 @@
                         $('#modalTracking').modal();
                     })
 
-                
+
 
             });
 
@@ -376,7 +378,7 @@
 
 				});
 			});
-          
+
         });
     </script>
 </body>
