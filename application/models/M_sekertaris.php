@@ -59,10 +59,15 @@ class M_sekertaris extends CI_Model{
         $this->db->delete('surat_masuk');  //Menghapus baris pada tb siswa dengan kondisi seperti di atas.
     }
 
-     public function update($post, $id)
+     public function update($post)
     {
         
         $params['nomor_berkas'] = $post['nomor berkas'];
+        $params['nomor_sm'] = $post['nomor_sm'];
+        $params['asal_sm'] = $post['asal_sm'];
+        $params['perihal'] = $post['perihal'];
+        $params['lampiran'] = $post['lampiran'];
+        $params['judul_surat'] = $post['judul_surat'];
         $this->db->where('id_sm', $id);
         $this->db->update('surat_masuk', $params); 
 

@@ -80,11 +80,11 @@ class Sekertaris extends CI_Controller {
     {
 
 		$this->form_validation->set_rules('nomor_berkas', 'nomor_berkas', 'required');
-		$this->form_validation->set_rules('tangg', 'Username', 'required|min_length[5]');
-		$this->form_validation->set_rules('gender', 'Gender', 'required');
-		$this->form_validation->set_rules('email', 'Email', 'required');
-		$this->form_validation->set_rules('level', 'Level', 'required');
-		$this->form_validation->set_rules('password', 'Password', 'min_length[5]');
+		$this->form_validation->set_rules('nomor_sm', 'nomor_sm', 'required');
+		$this->form_validation->set_rules('asal_sm', 'asal_sm', 'required');
+		$this->form_validation->set_rules('perihal', 'perihal', 'required');
+		$this->form_validation->set_rules('lampiran', 'lampiran', 'required');
+		$this->form_validation->set_rules('judul_surat', 'judul_surat', 'required');
 
 		$this->form_validation->set_message('required', '%s masih kosong, silahkan isi');
 		$this->form_validation->set_message('min_length', '{field} minimal 5 karakter');
@@ -93,11 +93,11 @@ class Sekertaris extends CI_Controller {
 		$this->form_validation->set_error_delimiters('<span class="help-block">', '</span>');
 
 		if (!$this->form_validation->run()) {
-			$query = $this->m_login->get($id);
+			$query = $this->m_sekertaris->get($id);
 			if ($query->num_rows() > 0) {
 				$data['row'] = $query->row();
 
-				$this->load->view('admin/edit_user', $data);
+				$this->load->view('sekertaris/edit_suratmasuk', $data);
 			} else{
 				echo "<script>alert('Data tidak ditemukan');";	
 				echo "window.location='".site_url('user')."';</script>";
@@ -105,11 +105,11 @@ class Sekertaris extends CI_Controller {
 			
 		}else{
 			$post = $_POST;
-			$this->m_login->update($post);
+			$this->m_sekertaris->update($post);
 			if ($this->db->affected_rows() > 0) {
 				echo "<script>alert('Data Berhasil Dirubah');</script>";
 			}
-			echo "<script>window.location='".site_url('user')."';</script>";
+			echo "<script>window.location='".site_url('sekertaris')."';</script>";
 		}
 		}
 

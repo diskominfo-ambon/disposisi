@@ -10,13 +10,11 @@
     <!-- Fav Icon  -->
     <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/images/favicon.png">
     <!-- Page Title  -->
-    <title>Kominfo | Disposisi Surat</title>
+    <title>Default Dashboard | DashLite Admin Template</title>
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dashlite.min.css?ver=2.2.0">
     <link id="skin-default" rel="stylesheet" href="<?php echo base_url(); ?>assets/css/theme.css?ver=2.2.0">
 </head>
-
-
 
 <body class="nk-body bg-lighter npc-default has-sidebar ">
     <div class="nk-app-root">
@@ -45,11 +43,30 @@
                                     <h6 class="overline-title text-primary-alt">Master Data</h6>
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
-                                    <a href="<?php echo base_url(); ?>index.php/sekertaris" class="nk-menu-link">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-tag-alt-fill"></em></span>
-                                        <span class="nk-menu-text">Surat Masuk</span>
+                                    <a href="<?php echo base_url(); ?>index.php/pegawai" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-cart-fill"></em></span>
+                                        <span class="nk-menu-text">Data Pegawai</span>
                                     </a>
-                                </li>
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item">
+                                    <a href="<?php echo base_url(); ?>index.php/bidang" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-activity-round-fill"></em></span>
+                                        <span class="nk-menu-text">Data Bidang</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item">
+                                    <a href="<?php echo base_url(); ?>index.php/sie" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-growth-fill"></em></span>
+                                        <span class="nk-menu-text">Data Sie</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item">
+                                    <a href="<?php echo base_url(); ?>index.php/user" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-alert-circle-fill"></em></span>
+                                        <span class="nk-menu-text">Data User</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
+
                             </ul><!-- .nk-menu -->
                         </div><!-- .nk-sidebar-menu -->
                     </div><!-- .nk-sidebar-content -->
@@ -71,6 +88,10 @@
                                     <img class="logo-dark logo-img" src="./images/logo-dark.png" srcset="./images/logo-dark2x.png 2x" alt="logo-dark">
                                 </a>
                             </div><!-- .nk-header-brand -->
+                            <div class="nk-header-search ml-3 ml-xl-0">
+                                <em class="icon ni ni-search"></em>
+                                <input type="text" class="form-control border-transparent form-focus-none" placeholder="Search anything">
+                            </div><!-- .nk-header-news -->
                             <div class="nk-header-tools">
                                 <ul class="nk-quick-nav">
                                     <li class="dropdown user-dropdown">
@@ -80,8 +101,8 @@
                                                     <em class="icon ni ni-user-alt"></em>
                                                 </div>
                                                 <div class="user-info d-none d-xl-block">
-                                                    <div class="user-status user-status-unverified">Sekertaris</div>
-                                                    <div class="user-name dropdown-indicator"><?= $user->username ?></div>
+                                                    <div class="user-status user-status-unverified">Verified</div>
+                                                    <div class="user-name dropdown-indicator">Admin</div>
                                                 </div>
                                             </div>
                                         </a>
@@ -92,8 +113,8 @@
                                                         <span>AB</span>
                                                     </div>
                                                     <div class="user-info">
-                                                        <span class="lead-text"><?= $user->nama ?></span>
-                                                        <span class="sub-text"><?= $user->email ?></span>
+                                                        <span class="lead-text">Mizwar</span>
+                                                        <span class="sub-text">mizwar0201@gmail.com</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -123,7 +144,7 @@
                                 <div class="nk-block-head nk-block-head-sm">
                                     <div class="nk-block-between">
                                         <div class="nk-block-head-content">
-                                            <h3 class="nk-block-title page-title">Dashboard</h3>
+                                            <h3 class="nk-block-title page-title">Form Edit Surat Masuk</h3>
                                         </div><!-- .nk-block-head-content -->
                                         <div class="nk-block-head-content">
                                             <div class="toggle-wrap nk-block-tools-toggle">
@@ -131,13 +152,8 @@
                                                 <div class="toggle-expand-content" data-content="pageMenu">
                                                     <ul class="nk-block-tools g-3">
                                                         <li>
-                                                            
-                                                                <a href="<?php echo base_url(); ?>index.php/sekertaris/download" class="btn btn-info">Download Laporan</a>
-                                                                <div class="dropdown-menu dropdown-menu-right">
-                                                                    <li class="nk-block-tools-opt"><a href="<?php echo base_url(); ?>index.php/sekertaris/tambah" class="btn btn-primary"><em class="icon ni ni-reports"></em><span>Tambah Surat Masuk</span></a></li>
-                                                                </div>
-                                                            </div>
                                                         </li>
+                                                        <li class="nk-block-tools-opt"><a href="<?php echo base_url(); ?>index.php/sekertaris" class="btn btn-primary"><em class="icon ni ni-reports"></em><span>Kembali</span></a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -148,83 +164,78 @@
 
                                 <div class="nk-block nk-block-lg">
                                         <div class="nk-block-head">
-                                            
-                                            
                                         </div>
-                                        <table class="datatable-init nowrap nk-tb-list is-separate" data-auto-responsive="false">
-                                            <thead>
-                                                <tr class="nk-tb-item nk-tb-head">
-                                                    <th class="nk-tb-col tb-col-sm"><span>#</span></th>
-                                                    <th class="nk-tb-col tb-col-sm"><span>Nomor Surat Masuk</span></span></th>
-                                                    <th class="nk-tb-col tb-col-sm"><span>Tanggal Masuk</span></th>
-                                                    <th class="nk-tb-col tb-col-sm"><span>Tanggal Expire</span></th>
-                                                    <th class="nk-tb-col tb-col-sm"><span>Nomor Surat Masuk</span></th>
-                                                    <th class="nk-tb-col tb-col-sm"><span>Asal Surat Masuk</span></th>
-                                                    <th class="nk-tb-col tb-col-sm"><span>Perihal</span></th>
-                                                    <th class="nk-tb-col tb-col-sm"><span>Sifat Surat</span></th>
-                                                        <th class="nk-tb-col tb-col-sm"><span>status</span></th>
-                                                    <th class="nk-tb-col nk-tb-col-tools">
-                                                        <ul class="nk-tb-actions gx-1 my-n1">
-                                                            <li class="mr-n1">
-                                                                <p>Action</p>
-                                                            </li>
-                                                        </ul>
-                                                    </th>
-                                                </tr><!-- .nk-tb-item -->
-                                            </thead>
-                                            <tbody>
-                                                <?php $no = 1;
-                                                    foreach($row as $data) { ?>
-                                                <tr class="nk-tb-item">
-                                                    <td class="nk-tb-col">
-                                                        <span class="tb-sub"><?=$no++?>.</span>
-                                                    </td>                                                    <td class="nk-tb-col">
-                                                        <span class="tb-sub"><?=$data->nomor_berkas?></span>
-                                                    </td>
-                                                    <td class="nk-tb-col">
-                                                        <span class="tb-sub"><?=$data->tanggal_masuk?></span>
-                                                    </td>
-                                                    <td class="nk-tb-col">
-                                                        <span class="tb-sub"><?=$data->tanggal_expire?></span>
-                                                    </td>
-                                                    <td class="nk-tb-col">
-                                                        <span class="tb-sub"><?=$data->nomor_sm?></span>
-                                                    </td>
-                                                    <td class="nk-tb-col">
-                                                        <span class="tb-sub"><?=$data->asal_sm?></span>
-                                                    </td>
-                                                    <td class="nk-tb-col">
-                                                        <span class="tb-sub"><?=$data->perihal?></span>
-                                                    </td>
-                                                    <td class="nk-tb-col">
-                                                        <span class="tb-sub"><?=$data->id_ss?></span>
-                                                    </td>
-                                                    <td class="nk-tb-col">
-                                                        <span class="tb-sub"><?=$data->status?></span>
-                                                    </td>
-                                                    <td class="nk-tb-col nk-tb-col-tools">
-                                                        <ul class="nk-tb-actions gx-1 my-n1">
-                                                            <li class="mr-n1">
-                                                                <div class="dropdown">
-                                                                    <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                                                    <div class="dropdown-menu dropdown-menu-right">
-                                                                        <ul class="link-list-opt no-bdr">
-                                                                            <li><a href="<?=site_url('sekertaris/update/'.$data->id_sm)?>"><em class="icon ni ni-edit"></em><span>Edit Data</span></a></li>
-                                                                            <li></li>
-                                                                            <li></li>
-                                                                            <li><a href="<?=site_url('sekertaris/delete/'.$data->id_sm)?>" onclick="return confirm('Yakin Hapus?')" name="id_sm" method="post" ><em class="icon ni ni-trash"></em><span>Hapus Data</span></a></li>
-                                                                        </ul>
-                                                                    </div>
+                                        <div class="card">
+                                            <div class="card-inner">
+                                                <div class="card-head">
+                                                    <h5 class="card-title">Edit Surat Masuk</h5>
+                                                </div>
+                                                <form action="<?php echo base_url(); ?>index.php/sekertaris/update/<?= $row->id_sm ?>" method="post">
+                                                <?= validation_errors() ?>
+                                                    <div class="row g-4">
+                                                       
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group">
+                                                                <div class="form-label-group">
+                                                                <label class="form-label" for="default-01">Nomor Berkas  *</label>
                                                                 </div>
-                                                            </li>
-                                                        </ul>
-                                                    </td>
-                                                </tr><!-- .nk-tb-item -->
+                                                                <input type="text" class="form-control form-control-lg" id="default-01" value="<?=$this->input->post('nomor_berkas') ?? $row->nomor_berkas ?>" name="nomor_berkas"> 
+                                                            </div><!-- .foem-group -->
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group">
+                                                                <div class="form-label-group">
+                                                                <label class="form-label" for="default-01">Nomor Surat Masuk  *</label>
+                                                                </div>
+                                                                <input type="text" class="form-control form-control-lg" id="default-01" value="<?=$this->input->post('nomor_sm') ?? $row->nomor_sm ?>" name="nomor_sm"> 
+                                                            </div><!-- .foem-group -->
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group">
+                                                                <div class="form-label-group">
+                                                                <label class="form-label" for="default-01">Asal Surat Masuk  *</label>
+                                                                </div>
+                                                                <input type="text" class="form-control form-control-lg" id="default-01" value="<?=$this->input->post('asal_sm') ?? $row->asal_sm ?>" name="asal_sm"> 
+                                                            </div><!-- .foem-group -->
+
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                        <div class="form-group">
+                                                                <div class="form-label-group">
+                                                                <label class="form-label" for="default-01">Perihal  *</label>
+                                                                </div>
+                                                                <input type="text" class="form-control form-control-lg" id="default-01" value="<?=$this->input->post('perihal') ?? $row->perihal ?>" name="perihal"> 
+                                                            </div><!-- .foem-group -->
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                        <div class="form-group">
+                                                                <div class="form-label-group">
+                                                                <label class="form-label" for="default-01">Lampiran  *</label>
+                                                                </div>
+                                                                <input type="text" class="form-control form-control-lg" id="default-01" value="<?=$this->input->post('lampiran') ?? $row->lampiran ?>" name="lampiran"> 
+                                                            </div><!-- .foem-group -->
+                                                        </div>
+                                                        
+                                                        <div class="col-lg-6">
+                                                        <div class="form-group">
+                                                                <div class="form-label-group">
+                                                                <label class="form-label" for="default-01">Judul Surat  *</label>
+                                                                </div>
+                                                                <input type="text" class="form-control form-control-lg" id="default-01" value="<?=$this->input->post('judul_surat') ?? $row->judul_surat ?>" name="judul_surat"> 
+                                                            </div><!-- .foem-group -->
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <button type="submit" class="btn btn-lg btn-primary">SIMPAN</button>
+                                                                <button type="reset" class="btn btn-lg btn-primary">Reset</button>
+                                                            </div>
+                                                        </div>
                                             
-                                            <?php
-                                            } ?>
-                                            </tbody>
-                                        </table><!-- .nk-tb-list -->
+                                                    </div>
+                                                    
+                                                </form>
+                                            </div>
+                                        </div>
 
                                 <!-- Content End -->
                                 </div><!-- .nk-block -->
@@ -255,11 +266,10 @@
         </div>
         <!-- main @e -->
     </div>
-
     <!-- app-root @e -->
     <!-- JavaScript -->
     <script src="<?php echo base_url(); ?>assets/js/bundle.js"></script>
-    <script src="<?php echo base_url(); ?>assets/js/scripts.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/scripts.js?ver=2.2.0"></script>
     <script src="<?php echo base_url(); ?>assets/js/charts/chart-ecommerce.js?ver=2.2.0"></script>
 </body>
 
