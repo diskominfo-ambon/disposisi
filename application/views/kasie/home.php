@@ -133,70 +133,71 @@
                                 </div><!-- .nk-block-head -->
                                 <!-- Content -->
 
-								<ul class="nav nav-tabs ml-1">
-									<li class="nav-item">
-										<a class="nav-link <?= $order == '' ? 'active': '' ?>" href="<?php echo base_url(); ?>index.php/kasie">Disposisi</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link <?= $order == 'finish' ? 'active': '' ?>" href="<?php echo base_url(); ?>index.php/kasie?order=finish">Laporan</a>
-									</li>
-								</ul>
+                                <ul class="nav nav-tabs ml-1">
+                                    <li class="nav-item">
+                                        <a class="nav-link <?= $order == '' ? 'active' : '' ?>" href="<?php echo base_url(); ?>index.php/kasie">Disposisi</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link <?= $order == 'finish' ? 'active' : '' ?>" href="<?php echo base_url(); ?>index.php/kasie?order=finish">Laporan</a>
+                                    </li>
+                                </ul>
 
                                 <div class="nk-block nk-block-lg">
-                                        <div class="nk-block-head">
+                                    <div class="nk-block-head">
 
 
-                                        </div>
-                                        <table class="datatable-init nowrap nk-tb-list is-separate" data-auto-responsive="false">
-                                            <thead>
-                                                <tr class="nk-tb-item nk-tb-head">
-                                                    <th class="nk-tb-col tb-col-sm"><span>#</span></th>
-                                                    <th class="nk-tb-col tb-col-sm"><span>Nomor Berkas</span></th>
-                                                    <th class="nk-tb-col tb-col-sm"><span>Tanggal Masuk</span></th>
-                                                    <th class="nk-tb-col tb-col-sm"><span>Tanggal Expire</span></th>
-                                                     <th class="nk-tb-col tb-col-sm"><span>Nomor Surat Masuk</span></th>
-                                                      <th class="nk-tb-col tb-col-sm"><span>Asal Surat Masuk</span></th>
-                                                       <th class="nk-tb-col tb-col-sm"><span>Perihal</span></th>
-                                                        <th class="nk-tb-col tb-col-sm"><span>Sifat Surat</span></th>
-                                                         <th class="nk-tb-col tb-col-sm"><span>status</span></th>
-                                                    <th class="nk-tb-col nk-tb-col-tools">
-                                                        <ul class="nk-tb-actions gx-1 my-n1">
-                                                            <li class="mr-n1">
-                                                                <p>Action</p>
-                                                            </li>
-                                                        </ul>
-                                                    </th>
-                                                </tr><!-- .nk-tb-item -->
-                                            </thead>
-                                            <tbody>
-                                                <?php $no = 1;
-                                                    foreach($row as $data) { ?>
-                                                <tr class="nk-tb-item">
+                                    </div>
+                                    <table class="datatable-init nowrap nk-tb-list is-separate" data-auto-responsive="false">
+                                        <thead>
+                                            <tr class="nk-tb-item nk-tb-head">
+                                                <th class="nk-tb-col tb-col-sm"><span>#</span></th>
+                                                <th class="nk-tb-col tb-col-sm"><span>Instruksi</span></th>
+                                                <th class="nk-tb-col tb-col-sm"><span>Tanggal Masuk</span></th>
+                                                <th class="nk-tb-col tb-col-sm"><span>Tanggal Expire</span></th>
+                                                <th class="nk-tb-col tb-col-sm"><span>Nomor Surat Masuk</span></th>
+                                                <th class="nk-tb-col tb-col-sm"><span>Asal Surat Masuk</span></th>
+                                                <th class="nk-tb-col tb-col-sm"><span>Perihal</span></th>
+                                                <th class="nk-tb-col tb-col-sm"><span>Sifat Surat</span></th>
+                                                <th class="nk-tb-col tb-col-sm"><span>status</span></th>
+                                                <th class="nk-tb-col nk-tb-col-tools">
+                                                    <ul class="nk-tb-actions gx-1 my-n1">
+                                                        <li class="mr-n1">
+                                                            <p>Action</p>
+                                                        </li>
+                                                    </ul>
+                                                </th>
+                                            </tr><!-- .nk-tb-item -->
+                                        </thead>
+                                        <tbody>
+                                            <?php $no = 1;
+                                            foreach ($row as $data) { ?>
+                                                <tr class="nk-tb-item" rowspan="2">
                                                     <td class="nk-tb-col">
-                                                        <span class="tb-sub"><?=$no++?>.</span>
-                                                    </td>                                                    <td class="nk-tb-col">
-                                                        <span class="tb-sub"><?=$data->nomor_berkas?></span>
+                                                        <span class="tb-sub"><?= $no++ ?>.</span>
                                                     </td>
                                                     <td class="nk-tb-col">
-                                                        <span class="tb-sub"><?=$data->tanggal_masuk?></span>
+                                                        <span class="tb-sub"><?= $data->instruksi ?></span>
                                                     </td>
                                                     <td class="nk-tb-col">
-                                                        <span class="tb-sub"><?=$data->tanggal_expire?></span>
+                                                        <span class="tb-sub"><?= $data->tanggal_masuk ?></span>
                                                     </td>
                                                     <td class="nk-tb-col">
-                                                        <span class="tb-sub"><?=$data->nomor_sm?></span>
+                                                        <span class="tb-sub"><?= $data->tanggal_expire ?></span>
                                                     </td>
                                                     <td class="nk-tb-col">
-                                                        <span class="tb-sub"><?=$data->asal_sm?></span>
+                                                        <span class="tb-sub"><?= $data->nomor_sm ?></span>
                                                     </td>
                                                     <td class="nk-tb-col">
-                                                        <span class="tb-sub"><?=$data->perihal?></span>
+                                                        <span class="tb-sub"><?= $data->asal_sm ?></span>
                                                     </td>
                                                     <td class="nk-tb-col">
-                                                        <span class="tb-sub"><?=$data->sifat_surat?></span>
+                                                        <span class="tb-sub"><?= $data->perihal ?></span>
                                                     </td>
                                                     <td class="nk-tb-col">
-                                                        <span class="tb-sub"><?=$data->status?></span>
+                                                        <span class="tb-sub"><?= $data->sifat_surat ?></span>
+                                                    </td>
+                                                    <td class="nk-tb-col">
+                                                        <span class="tb-sub"><?= $data->status ?></span>
                                                     </td>
                                                     <td class="nk-tb-col nk-tb-col-tools">
                                                         <ul class="nk-tb-actions gx-1 my-n1">
@@ -205,20 +206,23 @@
                                                                     <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                                     <div class="dropdown-menu dropdown-menu-right">
                                                                         <ul class="link-list-opt no-bdr">
+
+
+                                                                            <!-- <li>
+                                                                                <a href="<?= site_url('kasie/tambah?id_sm=' . $data->id_sm) ?>"><em class="icon ni ni-book"></em><span>Lanjut disposisi</span></a>
+                                                                            </li> -->
                                                                             <li>
-                                                                                <?php if ($order === ''): ?>
-                                                                                <li><a href="<?=site_url('kasie/tambah?id_sm='. $data->id_sm)?>"><em class="icon ni ni-book"></em><span>Lanjut disposisi</span></a></li>
-                                                                            <?php endif; ?>
-                                                                                <a data-image-src="<?= base_url('assets/gambar/'. $data->gambar) ?>" class="button__img-preview" href="javascript:void(0);" data-toggle="modal" data-target="#modalDefault"><em class="icon ni ni-eye"></em> Lihat data</a>
+
+                                                                                <a data-image-src="<?= base_url('assets/gambar/' . $data->gambar) ?>" class="button__img-preview" href="javascript:void(0);" data-toggle="modal" data-target="#modalDefault"><em class="icon ni ni-eye"></em> Lihat data</a>
                                                                             </li>
 
-																			<li>
-																				<a data-id-sm="<?= $data->id_sm ?>" class="btn__traking" href="javascript:void(0);"><em class="icon ni ni-eye"></em> Lacak</a>
-																			</li>
+                                                                            <li>
+                                                                                <a data-id-sm="<?= $data->id_sm ?>" class="btn__traking" href="javascript:void(0);"><em class="icon ni ni-eye"></em> Lacak</a>
+                                                                            </li>
 
-																			<?php if ($order === ''): ?>
-                                                                            	<li><a href="<?=site_url('kasie/tambah?id_sm='. $data->id_sm)?>"><em class="icon ni ni-book"></em><span>Buat laporan</span></a></li>
-																			<?php endif; ?>
+                                                                            <?php if ($order === '') : ?>
+                                                                                <li><a href="<?= site_url('kasie/laporan/' . $data->id_disposisi . '?id_sm=' . $data->id_sm) ?>"><em class="icon ni ni-book"></em><span>Buat laporan</span></a></li>
+                                                                            <?php endif; ?>
                                                                         </ul>
                                                                     </div>
                                                                 </div>
@@ -229,10 +233,10 @@
 
                                             <?php
                                             } ?>
-                                            </tbody>
-                                        </table><!-- .nk-tb-list -->
+                                        </tbody>
+                                    </table><!-- .nk-tb-list -->
 
-                                <!-- Content End -->
+                                    <!-- Content End -->
                                 </div><!-- .nk-block -->
                             </div>
                         </div>
@@ -263,66 +267,71 @@
     </div>
     <!-- app-root @e -->
 
-<!-- Modal Content Code -->
-<div class="modal fade" tabindex="-1" id="modalDefault">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <a href="#" class="close" data-dismiss="modal" aria-label="Close">
-                <em class="icon ni ni-cross"></em>
-            </a>
-            <div class="modal-header">
-                <h5 class="modal-title">Lampiran Surat</h5>
-            </div>
-            <div class="modal-body">
-                <img src="" alt="" style="width: 500px; object-fit: auto; border-radius: 3px;" id="modal__img-preview"/>
-            </div>
+    <!-- Modal Content Code -->
+    <div class="modal fade" tabindex="-1" id="modalDefault">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                    <em class="icon ni ni-cross"></em>
+                </a>
+                <div class="modal-header">
+                    <h5 class="modal-title">Lampiran Surat</h5>
+                </div>
+                <div class="modal-body">
+                    <img src="" alt="" style="width: 500px; object-fit: auto; border-radius: 3px;" id="modal__img-preview" />
+                </div>
 
+            </div>
         </div>
     </div>
-</div>
 
-<div class="modal fade" tabindex="-1" id="modalTracking">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<a href="#" class="close" data-dismiss="modal" aria-label="Close">
-					<em class="icon ni ni-cross"></em>
-				</a>
-				<div class="modal-header">
-					<h5 class="modal-title">Gambar</h5>
-				</div>
-				<div class="modal-body">
-					<div class="timeline">
-						<ul class="timeline-list" id="timeline-list">
-							<li class="timeline-item">
-								<div class="timeline-status bg-primary is-outline"></div>
-								<div class="timeline-date">13 Nov <em class="icon ni ni-alarm-alt"></em></div>
-								<div class="timeline-data">
-									<h6 class="timeline-title">Submited KYC Application</h6>
-									<div class="timeline-des">
-										<p>Re-submitted KYC Application form.</p>
-										<span class="time">09:30am</span>
-									</div>
-								</div>
-							</li>
-						</ul>
-					</div>
-				</div>
+    <div class="modal fade" tabindex="-1" id="modalTracking">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                    <em class="icon ni ni-cross"></em>
+                </a>
+                <div class="modal-header">
+                    <h5 class="modal-title">Gambar</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="timeline">
+                        <ul class="timeline-list" id="timeline-list">
+                            <li class="timeline-item">
+                                <div class="timeline-status bg-primary is-outline"></div>
+                                <div class="timeline-date">13 Nov <em class="icon ni ni-alarm-alt"></em></div>
+                                <div class="timeline-data">
+                                    <h6 class="timeline-title">Submited KYC Application</h6>
+                                    <div class="timeline-des">
+                                        <p>Re-submitted KYC Application form.</p>
+                                        <span class="time">09:30am</span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
 
-			</div>
-		</div>
-	</div>
+            </div>
+        </div>
+    </div>
 
     <!-- JavaScript -->
     <script src="<?php echo base_url(); ?>assets/js/bundle.js?ver=2.2.0"></script>
     <script src="<?php echo base_url(); ?>assets/js/scripts.js?ver=2.2.0"></script>
     <script src="<?php echo base_url(); ?>assets/js/charts/chart-ecommerce.js?ver=2.2.0"></script>
-	<script>
+    <script>
         $(document).ready(() => {
 
             function renderTimelineList(data) {
                 const date = new Date(data.tanggal);
-                const dateFull = new Intl.DateTimeFormat('id-ID', { dateStyle: 'full', timeStyle: 'short' }).format(date);
-                const dateShort = new Intl.DateTimeFormat('id-ID', { dateStyle: 'short' }).format(date);
+                const dateFull = new Intl.DateTimeFormat('id-ID', {
+                    dateStyle: 'full',
+                    timeStyle: 'short'
+                }).format(date);
+                const dateShort = new Intl.DateTimeFormat('id-ID', {
+                    dateStyle: 'short'
+                }).format(date);
 
                 return `
                     <li class="timeline-item">
@@ -339,17 +348,25 @@
                 `;
             }
 
-            $('.btn__traking').click(function () {
+            $('.btn__traking').click(function() {
                 const idSm = $(this).data().idSm;
 
                 const uri = `${window.location.origin}/disposisi/index.php/tracking/ajax_tracking/${idSm}`;
-                console.log({uri});
+                console.log({
+                    uri
+                });
 
                 fetch(uri)
                     .then(res => res.json())
-                    .then(({success, data: payload}) => {
+                    .then(({
+                        success,
+                        data: payload
+                    }) => {
                         // data history.
-                        console.log({success, payload});
+                        console.log({
+                            success,
+                            payload
+                        });
 
                         if (!success) {
                             alert('Terjadi keslahan memuat!');
@@ -370,14 +387,16 @@
 
             });
 
-			$(document).ready(() => {
-				$('.button__img-preview').click(function () {
-					const {imageSrc} = $(this).data();
+            $(document).ready(() => {
+                $('.button__img-preview').click(function() {
+                    const {
+                        imageSrc
+                    } = $(this).data();
 
-					$('#modal__img-preview').attr('src', imageSrc);
+                    $('#modal__img-preview').attr('src', imageSrc);
 
-				});
-			});
+                });
+            });
 
         });
     </script>
