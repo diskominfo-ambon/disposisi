@@ -1,12 +1,13 @@
 <?php
 
-class M_kabid extends CI_Model{
-    
+class M_kabid extends CI_Model
+{
+
     public function all($id)
     {
-        
+
         $rawQuery = <<<SQL
-        SELECT sm.*, u.nama, ss.sifat_surat FROM surat_masuk sm 
+        SELECT sm.*, d.id_disposisi, u.nama, ss.sifat_surat FROM surat_masuk sm 
             INNER JOIN sifat_surat ss ON sm.id_ss = ss.id_ss
             INNER JOIN disposisi d ON sm.id_sm = d.id_sm 
             INNER JOIN pegawai p ON d.id_pegawai = p.id_pegawai
@@ -20,10 +21,10 @@ class M_kabid extends CI_Model{
         return $query->result();
     }
 
-	public function getByOder($id, $order)
-	{
-		$sql =<<<SQL
-			SELECT DISTINCT s.*, ss.sifat_surat FROM
+    public function getByOrder($id, $order)
+    {
+        $sql = <<<SQL
+			SELECT DISTINCT s.*, d.id_disposisi, ss.sifat_surat FROM
 				surat_masuk s LEFT JOIN disposisi d
 					ON s.id_sm = d.id_sm
 				INNER JOIN sifat_surat ss 
@@ -38,22 +39,31 @@ class M_kabid extends CI_Model{
 
 
 
-		if (empty($order)) {
-			$sql .=<<<SQL
+        if (empty($order)) {
+            $sql .= <<<SQL
 				WHERE s.status = 'Proses';
 			SQL;
-		}
+        }
 
-		if ($order == 'finish') {
-			$sql .=<<<SQL
+        if ($order == 'finish') {
+            $sql .= <<<SQL
 				WHERE s.status = 'finish';
 			SQL;
-		}
-		
+        }
 
 
-		return $this->db->query($sql)->result();
-	}
+
+        $rows = $this->db->query($sql)->result();
+        $result = [];
+
+        foreach ($rows as $row) {
+            if (isset($result[$row->nomor_sm])) continue;
+
+            $result[$row->nomor_sm] = $row;
+        }
+
+        return $result;
+    }
 
 
     public function get($id = null)
@@ -67,21 +77,22 @@ class M_kabid extends CI_Model{
         return $query;
     }
 
-    public function tambah($post) {
+    public function tambah($post)
+    {
         $body = [];
 
-		// cek waktu kadarluasa surat.
-		$surat = $this->db
-			->select('tanggal_expire')
-			->where('id_sm', $post['id_sm'])
-			->get('surat_masuk')
-			->result()[0];
+        // cek waktu kadarluasa surat.
+        $surat = $this->db
+            ->select('tanggal_expire')
+            ->where('id_sm', $post['id_sm'])
+            ->get('surat_masuk')
+            ->result()[0];
 
-		date_default_timezone_set('Asia/Jayapura');
-	
-		if (time() > strtotime($surat->tanggal_expire)) {
-			return false;
-		}
+        date_default_timezone_set('Asia/Jayapura');
+
+        if (time() > strtotime($surat->tanggal_expire)) {
+            return false;
+        }
 
         foreach ($post['id_pegawai'] as $id) {
             $body[] = array_merge(
@@ -94,5 +105,37 @@ class M_kabid extends CI_Model{
 
         $this->db->insert_batch('disposisi', $body);
     }
- 
+
+
+    public function laporan($post, $id)
+    {
+
+        $userId = $this->session->userdata('id_user');
+
+        $sql = <<<SQL
+			SELECT id_pegawai FROM pegawai
+				WHERE id_user = $userId LIMIT 1
+		SQL;
+
+        $pegawai = $this->db->query($sql)->result();
+
+
+        var_dump(compact('pegawai', 'userId', 'post'));
+        die();
+
+        // untuk bkin history disposisi.
+        $this->db->insert('disposisi', [
+            'instruksi' => $post['instruksi'],
+            'id_pegawai' => $pegawai[0]->id_pegawai,
+            'id_sm' => $post['id_sm']
+        ]);
+        // end.
+
+
+        // rubah status.
+
+        $this->db
+            ->where('id_sm', $post['id_sm'])
+            ->set('status', $post['status']);
+    }
 }

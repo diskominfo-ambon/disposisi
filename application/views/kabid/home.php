@@ -223,14 +223,17 @@
                                                                                     </a>
                                                                                 </li>
 
+
                                                                                 <li>
-                                                                                    <a href="<?php echo base_url() ?>index.php/kasie/laporan?id_sm=<?= $data->id_sm ?>">
-                                                                                        <em class="icon ni ni-edit"></em>
+                                                                                    <?php
+                                                                                    $url = base_url() . 'index.php/kabid/laporan/' . $data->id_disposisi . '?id_sm=' . $data->id_sm;
+
+                                                                                    ?>
+                                                                                    <a href="<?= $url ?>">
+                                                                                        <em class=" icon ni ni-edit"></em>
                                                                                         <span>Buat laporan</span>
                                                                                     </a>
                                                                                 </li>
-
-
 
                                                                             <?php endif; ?>
                                                                         </ul>

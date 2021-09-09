@@ -48,7 +48,7 @@
                                         <span class="nk-menu-text">Surat Masuk</span>
                                     </a>
                                 </li>
-                                                                <li class="nk-menu-item">
+                                <li class="nk-menu-item">
                                     <a href="html/email-templates.html" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-tag-alt-fill"></em></span>
                                         <span class="nk-menu-text">Surat keluar</span>
@@ -294,7 +294,7 @@
                                                     <em class="icon ni ni-user-alt"></em>
                                                 </div>
                                                 <div class="user-info d-none d-xl-block">
-                                                    <div class="user-status user-status-unverified">Kasie</div>
+                                                    <div class="user-status user-status-unverified">Kabid</div>
                                                     <div class="user-name dropdown-indicator"><?= $user->nama ?></div>
                                                 </div>
                                             </div>
@@ -357,67 +357,51 @@
                                 <!-- Content -->
 
                                 <div class="nk-block nk-block-lg">
-                                        <div class="nk-block-head">
-                                        </div>
-                                        <div class="card">
-                                            <div class="card-inner">
-                                                <div class="card-head">
-                                                    <h5 class="card-title">Laporan Disposisi Surat</h5>
+                                    <div class="nk-block-head">
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-inner">
+                                            <div class="card-head">
+                                                <h5 class="card-title">Laporan Disposisi Surat</h5>
+                                            </div>
+                                            <form action="<?php echo base_url(); ?>index.php/kabid/laporan/<?= $id ?>?id_sm=<?= $_GET['id_sm'] ?>" method="post">
+                                                <div class="mb-2 text-danger">
+                                                    <?php echo validation_errors(); ?>
                                                 </div>
-                                                <form action="<?php echo base_url(); ?>index.php/kasie/tambah" method="post">
-													<div class="mb-2 text-danger">
-														<?php echo validation_errors(); ?>
-													</div>
-                                                    <div class="row g-4">
-                                                        <div class="col-lg-6">
-                                                            <div class="form-group">
-                                                                <div class="form-control-wrap">
-                                                                    <input type="text" class="form-control form-control-xl form-control-outlined" id="outlined-normal " name="instruksi" value="<?=set_value('instruksi')?>">
-                                                                    <label class="form-label-outlined" for="outlined-normal">Laporan</label>
-                                                                </div>
+                                                <div class="row g-4">
+                                                    <div class="col-lg-6">
+                                                        <div class="form-group">
+                                                            <div class="form-control-wrap">
+                                                                <input type="text" class="form-control form-control-xl form-control-outlined" id="outlined-normal " name="instruksi" value="<?= set_value('instruksi') ?>">
+                                                                <label class="form-label-outlined" for="outlined-normal">Laporan</label>
                                                             </div>
-                                                           
-                                                            <div class="form-group">
-                                                                <div class="form-control-wrap">
-                                                                    <select class="form-select form-control form-control-xl" data-ui="xl" id="field__id-sm" name="id_sm" >
-                                                                        <option value="default_option">--Pilih--</option>
-                                                                        <?php foreach($sekertaris as $seker): ?>
-																			<?php if(isset($_GET['id']) && $_GET['id'] == $seker->id_sm): ?>
-																				<option value="<?= $seker->id_sm ?>" selected><?= $seker->nomor_berkas ?></option>
-																			<?php
-																				continue;
-																			endif; ?>
-                                                                            <option value="<?= $seker->id_sm ?>"><?= $seker->nomor_berkas ?></option>
-                                                                        <?php endforeach; ?>
-																	</select>
-                                                                    <label class="form-label-outlined" for="outlined-select">ID Surat Masuk</label>
-                                                                </div>
-                                                            </div>
-                                                             <div class="form-group">
-                                                                <div class="form-control-wrap">
-                                                                    <select class="form-select form-control form-control-xl" data-ui="xl" id="outlined-select">
-                                                                        <option value="default_option">--Pilih--</option>
-                                                                        <option value="option_select_name">Proses</option>
-                                                                        <option value="option_select_name">Finish</option>
-                                                                    </select>
-                                                                    <label class="form-label-outlined" for="outlined-select">Status</label>
-                                                                </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <div class="form-control-wrap">
+                                                                <select name="status" class="form-select form-control form-control-xl" data-ui="xl" id="outlined-select">
+                                                                    <option value="default_option">--Pilih--</option>
+                                                                    <option value="Proses">Proses</option>
+                                                                    <option value="finish">Finish</option>
+                                                                </select>
+                                                                <label class="form-label-outlined" for="outlined-select">Status</label>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="row mt-3">
-														<div class="col-12">
-															<div class="form-group">
-																<button type="submit" class="btn btn-lg btn-primary">Lapor</button>
-																<button type="reset" class="btn btn-lg btn-primary">Reset</button>
-															</div>
-														</div>
-													</div>
-                                                </form>
-                                            </div>
+                                                </div>
+                                                <div class="row mt-3">
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <button type="submit" class="btn btn-lg btn-primary">Simpan perubahan</button>
+                                                            <button type="reset" class="btn btn-lg btn-primary">Reset</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
                                         </div>
+                                    </div>
 
-                                <!-- Content End -->
+                                    <!-- Content End -->
                                 </div><!-- .nk-block -->
                             </div>
                         </div>
