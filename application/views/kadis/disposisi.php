@@ -154,6 +154,7 @@
                                                 <form action="<?php echo base_url(); ?>index.php/kadis/tambah" method="post">
                                                     <div class="row g-4">
                                                         <?php echo validation_errors(); ?>
+                                                       
                                                         <div class="col-lg-6">
                                                             <div class="form-group">
 

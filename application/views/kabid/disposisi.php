@@ -145,9 +145,10 @@
                                                 <div class="card-head">
                                                     <h5 class="card-title">Disposisi Surat</h5>
                                                 </div>
-                                                <form action="<?php echo base_url(); ?>index.php/kabid/tambah" method="post">
+                                                <form action="<?php echo base_url(); ?>index.php/kabid/tambah/<?= $id ?>" method="post">
                                                     <div class="row g-4">
                                                         <?php echo validation_errors(); ?>
+                                                      
                                                         <div class="col-lg-6">
                                                             <div class="form-group">
                                                                 <div class="form-control-wrap">

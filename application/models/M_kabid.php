@@ -35,21 +35,26 @@ class M_kabid extends CI_Model
 							WHERE id_user = $id
 					)
 
+
 		SQL;
 
 
 
         if (empty($order)) {
             $sql .= <<<SQL
-				WHERE s.status = 'Proses';
+				WHERE s.status = 'Proses'
 			SQL;
         }
 
         if ($order == 'finish') {
             $sql .= <<<SQL
-				WHERE s.status = 'finish';
+				WHERE s.status = 'finish'
 			SQL;
         }
+
+        $sql .=<<<SQL
+            ORDER BY id_disposisi DESC;
+        SQL;
 
 
 
@@ -60,13 +65,9 @@ class M_kabid extends CI_Model
         foreach (json_decode($rows, true) as $row) {
            $key = $row['nomor_sm'];
 
-            if (isset($result[$key])) {
-                $result[$key]['read_at'] = $row['read_at']; 
-                $result[$key]['disposisi'] = is_null($row['read_at']);
-                continue;
-            }
+            if (isset($result[$key])) continue;
 
-            $result[$key] = array_merge($row, ['disposisi' => true]);
+            $result[$key] = array_merge($row, ['disposisi' => is_null($row['read_at'])]);
         }
 
         return $result;
@@ -86,7 +87,7 @@ class M_kabid extends CI_Model
         return $query;
     }
 
-    public function tambah($post)
+    public function tambah($post, $id_disposisi)
     {
         $body = [];
 
@@ -98,6 +99,7 @@ class M_kabid extends CI_Model
             ->result()[0];
 
         date_default_timezone_set('Asia/Jayapura');
+
 
         if (time() > strtotime($surat->tanggal_expire)) {
             return false;
@@ -111,14 +113,17 @@ class M_kabid extends CI_Model
                 ]
             );
         }
-
+   
         $this->db->insert_batch('disposisi', $body);
 
-
-        // update disposisi read_at.
-        $this->db->where('id_disposisi', $post['id_disposisi'])
-            ->set('read_at', $date)
-            ->update('disposisi');
+        $date = date('Y-m-d H:i:s');
+   
+        // update disposisi read_at.   
+          $this->db
+                ->set('read_at', $date)
+                ->where('id_disposisi', $id_disposisi)
+                ->update('disposisi');
+       
     }
 
 
@@ -135,8 +140,7 @@ class M_kabid extends CI_Model
         $pegawai = $this->db->query($sql)->result();
 
 
-        var_dump(compact('pegawai', 'userId', 'post'));
-        die();
+    
 
         // untuk bkin history disposisi.
         $this->db->insert('disposisi', [
@@ -151,6 +155,14 @@ class M_kabid extends CI_Model
 
         $this->db
             ->where('id_sm', $post['id_sm'])
-            ->set('status', $post['status']);
+            ->set('status', $post['status'])
+            ->update('surat_masuk');
+
+
+        $date = date('Y-m-d H:i:s');
+        // update disposisi read_at.
+        $this->db->where('id_disposisi', $post['id_disposisi'])
+            ->set('read_at', $date)
+            ->update('disposisi');
     }
 }

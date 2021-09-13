@@ -74,7 +74,7 @@ class Kabid extends CI_Controller
 		}
 	}
 
-	public function tambah()
+	public function tambah($id)
 	{
 
 		$this->form_validation->set_rules('instruksi', 'Instruksi', 'required');
@@ -93,10 +93,11 @@ class Kabid extends CI_Controller
 			$userId = $this->session->userdata('id_user');
 			$user = $this->currentUser();
 
-			$this->load->view('kabid/disposisi', compact('sekertaris', 'pegawai', 'userId', 'user'));
+			$this->load->view('kabid/disposisi', compact('sekertaris', 'pegawai', 'userId', 'user', 'id'));
 		} else {
 			$post = $_POST;
-			if ($this->m_kabid->tambah($post) === false) {
+			
+			if ($this->m_kabid->tambah($post, $id) === false) {
 				echo "<script>alert('Waktu untuk disposisi sudah berakhir!');</script>";
 				echo "<script>window.location='" . site_url('kabid') . "';</script>";
 			}

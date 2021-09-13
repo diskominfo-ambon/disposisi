@@ -177,7 +177,7 @@
                                             <?php $no = 1;
                                             foreach ($row as $data) { ?>
 
-                                                <tr class="nk-tb-item <?= $data['disposisi'] ? 'is-disposisi' : '' ?>">
+                                                <tr class="nk-tb-item <?= $data['disposisi'] && $data['status'] === 'Prosess' ? 'is-disposisi' : '' ?>">
                                                     <td class="nk-tb-col">
                                                         <span class="tb-sub"><?= $no++ ?>.</span>
                                                     </td>
@@ -225,7 +225,7 @@
 
 
                                                                                 <li>
-                                                                                    <a href="<?php echo base_url() ?>index.php/kabid/tambah?id_sm=<?= $data['id_sm'] ?>">
+                                                                                    <a href="<?php echo base_url() ?>index.php/kabid/tambah/<?= $data['id_disposisi'] ?>?id_sm=<?= $data['id_sm'] ?>">
                                                                                         <em class="icon ni ni-edit"></em>
                                                                                         <span>Disposisi</span>
                                                                                     </a>
