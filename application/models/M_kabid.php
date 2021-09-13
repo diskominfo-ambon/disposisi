@@ -24,7 +24,7 @@ class M_kabid extends CI_Model
     public function getByOrder($id, $order)
     {
         $sql = <<<SQL
-			SELECT DISTINCT s.*, d.id_disposisi, ss.sifat_surat FROM
+			SELECT DISTINCT s.*, d.id_disposisi, d.instruksi, d.read_at, ss.sifat_surat FROM
 				surat_masuk s LEFT JOIN disposisi d
 					ON s.id_sm = d.id_sm
 				INNER JOIN sifat_surat ss 
@@ -53,16 +53,25 @@ class M_kabid extends CI_Model
 
 
 
-        $rows = $this->db->query($sql)->result();
+        $rows = json_encode($this->db->query($sql)->result(), true);
+       
         $result = [];
+    
+        foreach (json_decode($rows, true) as $row) {
+           $key = $row['nomor_sm'];
 
-        foreach ($rows as $row) {
-            if (isset($result[$row->nomor_sm])) continue;
+            if (isset($result[$key])) {
+                $result[$key]['read_at'] = $row['read_at']; 
+                $result[$key]['disposisi'] = is_null($row['read_at']);
+                continue;
+            }
 
-            $result[$row->nomor_sm] = $row;
+            $result[$key] = array_merge($row, ['disposisi' => true]);
         }
 
         return $result;
+
+
     }
 
 
@@ -98,12 +107,18 @@ class M_kabid extends CI_Model
             $body[] = array_merge(
                 $post,
                 [
-                    'id_pegawai' => $id
+                    'id_pegawai' => $id,
                 ]
             );
         }
 
         $this->db->insert_batch('disposisi', $body);
+
+
+        // update disposisi read_at.
+        $this->db->where('id_disposisi', $post['id_disposisi'])
+            ->set('read_at', $date)
+            ->update('disposisi');
     }
 
 

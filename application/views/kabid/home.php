@@ -8,12 +8,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="A powerful and conceptual apps base dashboard template that especially build for developers and programmers.">
     <!-- Fav Icon  -->
-    <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/images/favicon.png">
+    <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/gambar/kominfo.jpg">
     <!-- Page Title  -->
-    <title>Default Dashboard | DashLite Admin Template</title>
+    <title>DISKOMINFO | DISPOSISI SURAT</title>
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dashlite.min.css?ver=2.2.0">
     <link id="skin-default" rel="stylesheet" href="<?php echo base_url(); ?>assets/css/theme.css?ver=2.2.0">
+
+    <style>
+        .is-disposisi td {
+            background-color:  #28a745 !important;
+            color: white;
+        }
+    </style>
 </head>
 
 <body class="nk-body bg-lighter npc-default has-sidebar ">
@@ -24,10 +31,10 @@
             <div class="nk-sidebar nk-sidebar-fixed is-light " data-content="sidebarMenu">
                 <div class="nk-sidebar-element nk-sidebar-head">
                     <div class="nk-sidebar-brand">
-                        <a href="html/index.html" class="logo-link nk-sidebar-logo">
-                            <img class="logo-light logo-img" src="<?php echo base_url(); ?>assets/images/logo.png" srcset="<?php echo base_url(); ?>assets/images/logo2x.png 2x" alt="logo">
-                            <img class="logo-dark logo-img" src="<?php echo base_url(); ?>assets/images/logo-dark.png" srcset="<?php echo base_url(); ?>assets/images/logo-dark2x.png 2x" alt="logo-dark">
-                            <img class="logo-small logo-img logo-img-small" src="<?php echo base_url(); ?>assets/images/logo-small.png" srcset="./images/logo-small2x.png 2x" alt="logo-small">
+                        <a href="<?php echo base_url(); ?>index.php/kabid" class="logo-link nk-sidebar-logo">
+                            <img class="logo-light logo-img" src="<?php echo base_url(); ?>assets/gambar/kominfo.jpg" srcset="<?php echo base_url(); ?>assets/gambar/kominfo.jpg" alt="logo">
+                            <img class="logo-dark logo-img" src="<?php echo base_url(); ?>assets/gambar/kominfo.jpg" srcset="<?php echo base_url(); ?>assets/gambar/kominfo.jpg" alt="logo-dark">
+                            <img class="logo-small logo-img logo-img-small" src="<?php echo base_url(); ?>assets/gambar/kominfo.jpg" srcset="./images/logo-small2x.png 2x" alt="logo-small">
                         </a>
                     </div>
                     <div class="nk-menu-trigger mr-n2">
@@ -149,7 +156,7 @@
                                         <thead>
                                             <tr class="nk-tb-item nk-tb-head">
                                                 <th class="nk-tb-col tb-col-sm"><span>#</span></th>
-                                                <th class="nk-tb-col tb-col-sm"><span>Nomor Berkas</span></th>
+                                                <th class="nk-tb-col tb-col-sm"><span>Instruksi</span></th>
                                                 <th class="nk-tb-col tb-col-sm"><span>Tanggal Masuk</span></th>
                                                 <th class="nk-tb-col tb-col-sm"><span>Tanggal Expire</span></th>
                                                 <th class="nk-tb-col tb-col-sm"><span>Nomor Surat Masuk</span></th>
@@ -169,33 +176,34 @@
                                         <tbody>
                                             <?php $no = 1;
                                             foreach ($row as $data) { ?>
-                                                <tr class="nk-tb-item">
+
+                                                <tr class="nk-tb-item <?= $data['disposisi'] ? 'is-disposisi' : '' ?>">
                                                     <td class="nk-tb-col">
                                                         <span class="tb-sub"><?= $no++ ?>.</span>
                                                     </td>
                                                     <td class="nk-tb-col">
-                                                        <span class="tb-sub"><?= $data->nomor_berkas ?></span>
+                                                        <span class="tb-sub"><?= $data['instruksi'] ?></span>
                                                     </td>
                                                     <td class="nk-tb-col">
-                                                        <span class="tb-sub"><?= $data->tanggal_masuk ?></span>
+                                                        <span class="tb-sub"><?= $data['tanggal_masuk'] ?></span>
                                                     </td>
                                                     <td class="nk-tb-col">
-                                                        <span class="tb-sub"><?= $data->tanggal_expire ?></span>
+                                                        <span class="tb-sub"><?= $data['tanggal_expire'] ?></span>
                                                     </td>
                                                     <td class="nk-tb-col">
-                                                        <span class="tb-sub"><?= $data->nomor_sm ?></span>
+                                                        <span class="tb-sub"><?= $data['nomor_sm'] ?></span>
                                                     </td>
                                                     <td class="nk-tb-col">
-                                                        <span class="tb-sub"><?= $data->asal_sm ?></span>
+                                                        <span class="tb-sub"><?= $data['asal_sm'] ?></span>
                                                     </td>
                                                     <td class="nk-tb-col">
-                                                        <span class="tb-sub"><?= $data->perihal ?></span>
+                                                        <span class="tb-sub"><?= $data['perihal'] ?></span>
                                                     </td>
                                                     <td class="nk-tb-col">
-                                                        <span class="tb-sub"><?= $data->sifat_surat ?></span>
+                                                        <span class="tb-sub"><?= $data['sifat_surat'] ?></span>
                                                     </td>
                                                     <td class="nk-tb-col">
-                                                        <span class="tb-sub"><?= $data->status ?></span>
+                                                        <span class="tb-sub"><?= $data['status'] ?></span>
                                                     </td>
                                                     <td class="nk-tb-col nk-tb-col-tools">
                                                         <ul class="nk-tb-actions gx-1 my-n1">
@@ -206,8 +214,8 @@
                                                                         <ul class="link-list-opt no-bdr">
 
 
-                                                                            <li>
-                                                                                <a data-id-sm="<?= $data->id_sm ?>" data-image-src="<?= base_url('assets/gambar/' . $data->gambar) ?>" class="button__img-preview btn__traking" href="javascript:void(0);" data-toggle="modal" data-target="#modalDefault"><em class="icon ni ni-eye"></em> Lacak</a>
+                                                                            <li class="btn__traking" data-id-sm="<?= $data['id_sm'] ?>" data-image-src="<?= base_url('assets/gambar/' . $data['gambar']) ?>" >
+                                                                                <a class="button__img-preview" href="javascript:void(0);" data-toggle="modal" data-target="#modalDefault"><i class="icon ni ni-eye"></i> Lacak</a>
                                                                             </li>
 
 
@@ -217,7 +225,7 @@
 
 
                                                                                 <li>
-                                                                                    <a href="<?php echo base_url() ?>index.php/kabid/tambah?id_sm=<?= $data->id_sm ?>">
+                                                                                    <a href="<?php echo base_url() ?>index.php/kabid/tambah?id_sm=<?= $data['id_sm'] ?>">
                                                                                         <em class="icon ni ni-edit"></em>
                                                                                         <span>Disposisi</span>
                                                                                     </a>
@@ -226,7 +234,7 @@
 
                                                                                 <li>
                                                                                     <?php
-                                                                                    $url = base_url() . 'index.php/kabid/laporan/' . $data->id_disposisi . '?id_sm=' . $data->id_sm;
+                                                                                    $url = base_url() . 'index.php/kabid/laporan/' . $data['id_disposisi'] . '?id_sm=' . $data['id_sm'];
 
                                                                                     ?>
                                                                                     <a href="<?= $url ?>">

@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="A powerful and conceptual apps base dashboard template that especially build for developers and programmers.">
     <!-- Fav Icon  -->
-    <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/images/favicon.png">
+    <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/gambar/kominfo.jpg">
     <!-- Page Title  -->
-    <title>Default Dashboard | DashLite Admin Template</title>
+    <title>DISKOMINFO | DISPOSISI SURAT</title>
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dashlite.min.css">
     <link id="skin-default" rel="stylesheet" href="<?php echo base_url(); ?>assets/css/theme.css">
@@ -24,10 +24,10 @@
             <div class="nk-sidebar nk-sidebar-fixed is-light " data-content="sidebarMenu">
                 <div class="nk-sidebar-element nk-sidebar-head">
                     <div class="nk-sidebar-brand">
-                        <a href="html/index.html" class="logo-link nk-sidebar-logo">
-                            <img class="logo-light logo-img" src="<?php echo base_url(); ?>assets/images/logo.png" srcset="<?php echo base_url(); ?>assets/images/logo2x.png 2x" alt="logo">
-                            <img class="logo-dark logo-img" src="<?php echo base_url(); ?>assets/images/logo-dark.png" srcset="<?php echo base_url(); ?>assets/images/logo-dark2x.png 2x" alt="logo-dark">
-                            <img class="logo-small logo-img logo-img-small" src="<?php echo base_url(); ?>assets/images/logo-small.png" srcset="./images/logo-small2x.png 2x" alt="logo-small">
+                        <a href="<?php echo base_url(); ?>index.php/home" class="logo-link nk-sidebar-logo">
+                            <img class="logo-light logo-img" src="<?php echo base_url(); ?>assets/gambar/kominfo.jpg" srcset="<?php echo base_url(); ?>assets/gambar/kominfo.jpg" alt="logo">
+                            <img class="logo-dark logo-img" src="<?php echo base_url(); ?>assets/gambar/kominfo.jpg" srcset="<?php echo base_url(); ?>assets/gambar/kominfo.jpg" alt="logo-dark">
+                            <img class="logo-small logo-img logo-img-small" src="<?php echo base_url(); ?>assets/gambar/kominfo.jpg" srcset="./images/logo-small2x.png 2x" alt="logo-small">
                         </a>
                     </div>
                     <div class="nk-menu-trigger mr-n2">
@@ -44,7 +44,7 @@
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
                                     <a href="<?php echo base_url(); ?>index.php/pegawai" class="nk-menu-link">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-cart-fill"></em></span>
+                                        <span class="nk-menu-icon"><em class="icon ni ni-user"></em></span>
                                         <span class="nk-menu-text">Data Pegawai</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
@@ -144,7 +144,7 @@
                                 <div class="nk-block-head nk-block-head-sm">
                                     <div class="nk-block-between">
                                         <div class="nk-block-head-content">
-                                            <h3 class="nk-block-title page-title">Beranda</h3>
+                                            <h3 class="nk-block-title page-title">Dashboard</h3>
                                         </div><!-- .nk-block-head-content -->
                                         <div class="nk-block-head-content">
                                             <div class="toggle-wrap nk-block-tools-toggle">
@@ -153,19 +153,154 @@
                                                     <ul class="nk-block-tools g-3">
                                                         <li>
                                                             
-                                                        </li>
-                                                        <li class="nk-block-tools-opt"><a href="<?php echo base_url(); ?>index.php/user" class="btn btn-primary"><em class="icon ni ni-reports"></em><span>Tambah User</span></a></li>
                                                     </ul>
                                                 </div>
                                             </div>
                                         </div><!-- .nk-block-head-content -->
                                     </div><!-- .nk-block-between -->
                                 </div><!-- .nk-block-head -->
-                                <!-- Content -->
-
-                                
-
-                                <!-- Content End -->
+                                <div class="nk-block">
+                                    <div class="row g-gs">
+                                        <div class="col-xxl-3 col-sm-10">
+                                            <div class="card h-100">
+                                                <div class="card-inner">
+                                                    <div class="card-title-group mb-2">
+                                                        <div class="card-title">
+                                                            <h6 class="title">TOTAL DATA ADMIN</h6>
+                                                        </div>
+                                                    </div>
+                                                    <ul class="nk-store-statistics">
+                                                        <li class="item">
+                                                            <div class="info">
+                                                                <div class="title">DATA PEGAWAI</div>
+                                                                <div class="count">17</div>
+                                                            </div>
+                                                        <a href="<?php echo base_url(); ?>index.php/pegawai">
+                                                            <em class="icon bg-primary-dim ni ni-users"></em>
+                                                            </a>
+                                                        </li>
+                                                        <li class="item">
+                                                            <div class="info">
+                                                                <div class="title">DATA BIDANG</div>
+                                                                <div class="count">4</div>
+                                                            </div>
+                                                        <a href="<?php echo base_url(); ?>index.php/bidang">
+                                                            <em class="icon bg-info-dim ni ni-box"></em>
+                                                        </a>
+                                                        </li>
+                                                        <li class="item">
+                                                            <div class="info">
+                                                                <div class="title">DATA SIE</div>
+                                                                <div class="count">11</div>
+                                                            </div>
+                                                            <a href="<?php echo base_url(); ?>index.php/sie">
+                                                            <em class="icon bg-pink-dim ni ni-user-alt"></em>
+                                                        </a>
+                                                        </li>
+                                                        <li class="item" >
+                                                            <div class="info">
+                                                                <div class="title">DATA USERS</div>
+                                                                <div class="count">20</div>
+                                                            </div>
+                                                            <a href="<?php echo base_url(); ?>index.php/user">
+                                                            <em class="icon bg-purple-dim ni ni-server"></em>
+                                                        </a>
+                                                        </li>
+                                                    </ul>
+                                                </div><!-- .card-inner -->
+                                            </div><!-- .card -->
+                                        </div><!-- .col -->
+                                        <div class="col-xxl-3 col-sm-6">
+                                            <div class="card">
+                                                <div class="nk-ecwg nk-ecwg6">
+                                                    <div class="card-inner">
+                                                        <div class="card-title-group">
+                                                            <div class="card-title">
+                                                                <h6 class="title">Today Orders</h6>
+                                                            </div>
+                                                        </div>
+                                                        <div class="data">
+                                                            <div class="data-group">
+                                                                <div class="amount">1,945</div>
+                                                                <div class="nk-ecwg6-ck">
+                                                                    <canvas class="ecommerce-line-chart-s3" id="todayOrders"></canvas>
+                                                                </div>
+                                                            </div>
+                                                            <div class="info"><span class="change up text-danger"><em class="icon ni ni-arrow-long-up"></em>4.63%</span><span> vs. last week</span></div>
+                                                        </div>
+                                                    </div><!-- .card-inner -->
+                                                </div><!-- .nk-ecwg -->
+                                            </div><!-- .card -->
+                                        </div><!-- .col -->
+                                        <div class="col-xxl-3 col-sm-6">
+                                            <div class="card">
+                                                <div class="nk-ecwg nk-ecwg6">
+                                                    <div class="card-inner">
+                                                        <div class="card-title-group">
+                                                            <div class="card-title">
+                                                                <h6 class="title">Today Revenue</h6>
+                                                            </div>
+                                                        </div>
+                                                        <div class="data">
+                                                            <div class="data-group">
+                                                                <div class="amount">$2,338</div>
+                                                                <div class="nk-ecwg6-ck">
+                                                                    <canvas class="ecommerce-line-chart-s3" id="todayRevenue"></canvas>
+                                                                </div>
+                                                            </div>
+                                                            <div class="info"><span class="change down text-danger"><em class="icon ni ni-arrow-long-down"></em>2.34%</span><span> vs. last week</span></div>
+                                                        </div>
+                                                    </div><!-- .card-inner -->
+                                                </div><!-- .nk-ecwg -->
+                                            </div><!-- .card -->
+                                        </div><!-- .col -->
+                                        <div class="col-xxl-3 col-sm-6">
+                                            <div class="card">
+                                                <div class="nk-ecwg nk-ecwg6">
+                                                    <div class="card-inner">
+                                                        <div class="card-title-group">
+                                                            <div class="card-title">
+                                                                <h6 class="title">Today Customers</h6>
+                                                            </div>
+                                                        </div>
+                                                        <div class="data">
+                                                            <div class="data-group">
+                                                                <div class="amount">847</div>
+                                                                <div class="nk-ecwg6-ck">
+                                                                    <canvas class="ecommerce-line-chart-s3" id="todayCustomers"></canvas>
+                                                                </div>
+                                                            </div>
+                                                            <div class="info"><span class="change up text-danger"><em class="icon ni ni-arrow-long-up"></em>4.63%</span><span> vs. last week</span></div>
+                                                        </div>
+                                                    </div><!-- .card-inner -->
+                                                </div><!-- .nk-ecwg -->
+                                            </div><!-- .card -->
+                                        </div><!-- .col -->
+                                        <div class="col-xxl-3 col-sm-6">
+                                            <div class="card">
+                                                <div class="nk-ecwg nk-ecwg6">
+                                                    <div class="card-inner">
+                                                        <div class="card-title-group">
+                                                            <div class="card-title">
+                                                                <h6 class="title">Today Visitors</h6>
+                                                            </div>
+                                                        </div>
+                                                        <div class="data">
+                                                            <div class="data-group">
+                                                                <div class="amount">23,485</div>
+                                                                <div class="nk-ecwg6-ck">
+                                                                    <canvas class="ecommerce-line-chart-s3" id="todayVisitors"></canvas>
+                                                                </div>
+                                                            </div>
+                                                            <div class="info"><span class="change down text-danger"><em class="icon ni ni-arrow-long-down"></em>2.34%</span><span> vs. last week</span></div>
+                                                        </div>
+                                                    </div><!-- .card-inner -->
+                                                </div><!-- .nk-ecwg -->
+                                            </div><!-- .card -->
+                                        </div><!-- .col -->
+                                        
+                                        
+                                    </div><!-- .row -->
                                 </div><!-- .nk-block -->
                             </div>
                         </div>
@@ -195,40 +330,10 @@
         <!-- main @e -->
     </div>
     <!-- app-root @e -->
-
-<!-- Modal Content Code -->
-<div class="modal fade" tabindex="-1" id="modalDefault">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <a href="#" class="close" data-dismiss="modal" aria-label="Close">
-                <em class="icon ni ni-cross"></em>
-            </a>
-            <div class="modal-header">
-                <h5 class="modal-title">Gambar</h5>
-            </div>
-            <div class="modal-body">
-                <img src="" alt="" style="width: 500px; object-fit: auto; border-radius: 3px;" id="modal__img-preview"/>
-            </div>
-            
-        </div>
-    </div>
-</div>
-
     <!-- JavaScript -->
-    <script src="<?php echo base_url(); ?>assets/js/bundle.js"></script>
-    <script src="<?php echo base_url(); ?>assets/js/scripts.js"></script>
-    <script src="<?php echo base_url(); ?>assets/js/charts/chart-ecommerce.js"></script>
-
-    <script>
-        $(document).ready(() => {
-            $('.button__img-preview').click(function () {
-                const {imageSrc} = $(this).data();
-
-                $('#modal__img-preview').attr('src', imageSrc);
-
-            })
-        });
-    </script>
+    <script src="./assets/js/bundle.js?ver=2.2.0"></script>
+    <script src="./assets/js/scripts.js?ver=2.2.0"></script>
+    <script src="./assets/js/charts/chart-ecommerce.js?ver=2.2.0"></script>
 </body>
 
 </html>
