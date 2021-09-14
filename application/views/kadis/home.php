@@ -161,7 +161,7 @@
                                                     <th class="nk-tb-col tb-col-sm"><span>#</span></th>
                                                     <th class="nk-tb-col tb-col-sm"><span>Nomor Berkas</span></th>
                                                     <th class="nk-tb-col tb-col-sm"><span>Tanggal Masuk</span></th>
-                                                    <th class="nk-tb-col tb-col-sm"><span>Tanggal Expire</span></th>
+                                                    <th class="nk-tb-col tb-col-sm"><span>Batas Waktu Surat</span></th>
 													<th class="nk-tb-col tb-col-sm"><span>Nomor Surat Masuk</span></th>
 													<th class="nk-tb-col tb-col-sm"><span>Asal Surat Masuk</span></th>
 													<th class="nk-tb-col tb-col-sm"><span>Perihal</span></th>
@@ -182,7 +182,8 @@
                                                 <tr class="nk-tb-item">
                                                     <td class="nk-tb-col">
                                                         <span class="tb-sub"><?=$no++?>.</span>
-                                                    </td>                                                    <td class="nk-tb-col">
+                                                    </td>
+                                                    <td class="nk-tb-col">
                                                         <span class="tb-sub"><?=$data->nomor_berkas?></span>
                                                     </td>
                                                     <td class="nk-tb-col">
@@ -213,22 +214,7 @@
 														<?php endif; ?>
                                                     </li>
                                                     </td>
-                                                    <td class="nk-tb-col nk-tb-col-tools">
-                                                        <ul class="nk-tb-actions gx-1 my-n1">
-                                                            <li class="mr-n1">
-                                                                <div class="dropdown">
-                                                                    <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                                                    <div class="dropdown-menu dropdown-menu-right">
-                                                                        <ul class="link-list-opt no-bdr">
-                                                                            <li>
-                                                                                <a data-image-src="<?= base_url('assets/gambar/'. $data->gambar) ?>" class="button__img-preview" href="javascript:void(0);" data-toggle="modal" data-target="#modalDefault"><em class="icon ni ni-eye"></em> Lihat Lampiran Surat</a>
-                                                                            </li>                                                        
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </td>
+                                                    
                                                 </tr><!-- .nk-tb-item -->
                                             
                                             <?php

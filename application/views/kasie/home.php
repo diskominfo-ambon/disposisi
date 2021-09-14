@@ -153,7 +153,7 @@
                                                 <th class="nk-tb-col tb-col-sm"><span>#</span></th>
                                                 <th class="nk-tb-col tb-col-sm"><span>Instruksi</span></th>
                                                 <th class="nk-tb-col tb-col-sm"><span>Tanggal Masuk</span></th>
-                                                <th class="nk-tb-col tb-col-sm"><span>Tanggal Expire</span></th>
+                                                <th class="nk-tb-col tb-col-sm"><span>Batas Waktu Surat</span></th>
                                                 <th class="nk-tb-col tb-col-sm"><span>Nomor Surat Masuk</span></th>
                                                 <th class="nk-tb-col tb-col-sm"><span>Asal Surat Masuk</span></th>
                                                 <th class="nk-tb-col tb-col-sm"><span>Perihal</span></th>
@@ -213,7 +213,7 @@
                                                                             </li> -->
                                                                             <li>
 
-                                                                                <a data-image-src="<?= base_url('assets/gambar/' . $data->gambar) ?>" class="button__img-preview" href="javascript:void(0);" data-toggle="modal" data-target="#modalDefault"><em class="icon ni ni-eye"></em> Lihat data</a>
+                                                                                <a data-image-src="<?= base_url('assets/gambar/' . $data->gambar) ?>" class="button__img-preview" href="javascript:void(0);" data-toggle="modal" data-target="#modalDefault"><em class="icon ni ni-eye"></em> Lihat Lampiran Surat</a>
                                                                             </li>
 
                                                                             <li>

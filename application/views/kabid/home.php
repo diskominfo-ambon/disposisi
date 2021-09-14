@@ -158,7 +158,7 @@
                                                 <th class="nk-tb-col tb-col-sm"><span>#</span></th>
                                                 <th class="nk-tb-col tb-col-sm"><span>Instruksi</span></th>
                                                 <th class="nk-tb-col tb-col-sm"><span>Tanggal Masuk</span></th>
-                                                <th class="nk-tb-col tb-col-sm"><span>Tanggal Expire</span></th>
+                                                <th class="nk-tb-col tb-col-sm"><span>Batas Waktu Surat</span></th>
                                                 <th class="nk-tb-col tb-col-sm"><span>Nomor Surat Masuk</span></th>
                                                 <th class="nk-tb-col tb-col-sm"><span>Asal Surat Masuk</span></th>
                                                 <th class="nk-tb-col tb-col-sm"><span>Perihal</span></th>
