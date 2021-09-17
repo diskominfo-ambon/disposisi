@@ -54,11 +54,6 @@ class M_sekertaris extends CI_Model{
 
     }
 
-      public function delete($id){
-        $this->db->where('id_sm',$id); // persamaan kolom noinduk dengan variabel noinduk yang didapat dari controller
-        $this->db->delete('surat_masuk');  //Menghapus baris pada tb siswa dengan kondisi seperti di atas.
-    }
-
      public function update($post)
     {
         
@@ -71,6 +66,11 @@ class M_sekertaris extends CI_Model{
         $this->db->where('id_sm', $id);
         $this->db->update('surat_masuk', $params); 
 
+    }
+
+    public function delete($id){
+        $this->db->where('id_sm',$id); // persamaan kolom noinduk dengan variabel noinduk yang didapat dari controller
+        $this->db->delete('surat_masuk');  //Menghapus baris pada tb siswa dengan kondisi seperti di atas.
     }
  
 }

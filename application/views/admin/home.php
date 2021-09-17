@@ -226,7 +226,7 @@
                                                                     <canvas class="ecommerce-line-chart-s3" id="todayOrders"></canvas>
                                                                 </div>
                                                             </div>
-                                                            <div class="info"><span class="change up text-danger"><em class="icon ni ni-arrow-long-up"></em>100%</span><span> vs. last week</span></div>
+                                                         
                                                         </div>
                                                     </div><!-- .card-inner -->
                                                 </div><!-- .nk-ecwg -->
@@ -248,7 +248,7 @@
                                                                     <canvas class="ecommerce-line-chart-s3" id="todayRevenue"></canvas>
                                                                 </div>
                                                             </div>
-                                                            <div class="info"><span class="change down text-danger"><em class="icon ni ni-arrow-long-down"></em>100%</span><span> vs. last week</span></div>
+                                                            
                                                         </div>
                                                     </div><!-- .card-inner -->
                                                 </div><!-- .nk-ecwg -->
@@ -270,7 +270,7 @@
                                                                     <canvas class="ecommerce-line-chart-s3" id="todayCustomers"></canvas>
                                                                 </div>
                                                             </div>
-                                                            <div class="info"><span class="change up text-danger"><em class="icon ni ni-arrow-long-up"></em>100%</span><span> vs. last week</span></div>
+                                                            
                                                         </div>
                                                     </div><!-- .card-inner -->
                                                 </div><!-- .nk-ecwg -->
@@ -292,7 +292,7 @@
                                                                     <canvas class="ecommerce-line-chart-s3" id="todayVisitors"></canvas>
                                                                 </div>
                                                             </div>
-                                                            <div class="info"><span class="change down text-danger"><em class="icon ni ni-arrow-long-down"></em>100%</span><span> vs. last week</span></div>
+                                                            
                                                         </div>
                                                     </div><!-- .card-inner -->
                                                 </div><!-- .nk-ecwg -->

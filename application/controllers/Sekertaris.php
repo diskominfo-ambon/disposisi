@@ -116,12 +116,12 @@ class Sekertaris extends CI_Controller {
 		
 
 	public function delete($id){
-        $this->m_login->delete($id); //Memanggil fungsi deleteData pada M_Index sembari membawa parameter $noinduk.
+        $this->m_sekertaris->delete($id); //Memanggil fungsi deleteData pada M_Index sembari membawa parameter $noinduk.
 
         if ($this->db->affected_rows() > 0) {
 				echo "<script>alert('Data Berhasil Dihapus');</script>";
 			}
-			echo "<script>window.location='".site_url('user')."';</script>";
+			echo "<script>window.location='".site_url('sekertaris')."';</script>";
     }
 
     public function download()
